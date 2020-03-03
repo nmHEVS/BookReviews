@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">BookReviews</string>
+
+    <!-- Buttons -->
+    <string name="allBooks">Show all books</string>
+    <string name="search">Search a book</string>
+    <string name="addBook">Add a book</string>
+
+    <!-- Activities -->
+    <string name="allBooks_A">All the books</string>
+    <string name="search_A">Search a book</string>
+
+
 </resources>
