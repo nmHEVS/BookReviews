@@ -5,10 +5,16 @@
     <string name="allBooks">Show all books</string>
     <string name="search">Search a book</string>
     <string name="addBook">Add a book</string>
+    <string name="search_author">By author</string>
+    <string name="search_title">By title</string>
+
 
     <!-- Activities -->
     <string name="allBooks_A">All the books</string>
     <string name="search_A">Search a book</string>
+    <string name="add_A">Add a book</string>
+
+
 
 
 </resources>

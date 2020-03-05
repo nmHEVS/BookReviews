@@ -13,8 +13,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        //setSupportActionBar(myToolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
+        //setSupportActionBar(toolbar);
     }
 
 
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     /** Called when click on Search a Book*/
     public void addBook(View view) {
-        Intent intent = new Intent(this, SearchBook.class);
+        Intent intent = new Intent(this, AddBook.class);
         startActivity(intent);
     }
 
