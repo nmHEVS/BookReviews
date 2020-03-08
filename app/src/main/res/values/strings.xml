@@ -4,8 +4,9 @@
     <!-- Buttons -->
     <string name="allBooks">Show all books</string>
     <string name="search">Search a book</string>
-    <string name="addBook">Add a book</string>
-    <string name="add_Book">Add</string>
+    <string name="add_Book">Add a book</string>
+    <string name="add_review">Add a review</string>
+    <string name="show_reviews">Show reviews</string>
     <string name="cancel">Cancel</string>
 
 
@@ -17,6 +18,7 @@
     <string name="category">Category :</string>
     <string name="publication_date">Year of publication :</string>
     <string name="summary">Plot summary :</string>
+    <string name="book_example">Farenheit 451   R. Bradburry    4.5</string> //to do : search + concat
 
 
     <!-- Text array -->

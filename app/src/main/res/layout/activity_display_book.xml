@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <include
         android:id="@+id/app_bar"
@@ -89,92 +88,98 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/publication_textView" />
 
+    <!-- book data _________________________________________________________________________________________________________-->
 
-    //edit text -------------------------------------------------------------------------------------
-
-    <EditText
-        android:id="@+id/title_editText"
+    <TextView
+        android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:text="Fahranheit 451"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/title_textView"
         app:layout_constraintTop_toBottomOf="@+id/app_bar" />
 
-    <EditText
-        android:id="@+id/author_editText"
+    <TextView
+        android:id="@+id/author"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:text="Ray Bradburry"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/author_textView"
-        app:layout_constraintTop_toBottomOf="@+id/title_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
-    <EditText
-        android:id="@+id/edition_editText"
+    <TextView
+        android:id="@+id/edition"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:text="Ballentines Book"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/edition_textView"
-        app:layout_constraintTop_toBottomOf="@+id/author_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/author" />
 
-    <EditText
-        android:id="@+id/category_editText"
+    <TextView
+        android:id="@+id/category"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:text="Distopian"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/category_textView"
-        app:layout_constraintTop_toBottomOf="@+id/edition_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/edition" />
 
-    <EditText
-        android:id="@+id/editText5"
+    <TextView
+        android:id="@+id/publication"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:inputType="date"
+        android:text="1955"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/publication_textView"
-        app:layout_constraintTop_toBottomOf="@+id/category_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/category" />
 
-    <EditText
-        android:id="@+id/editText7"
-        android:layout_width="0dp"
-        android:layout_height="260dp"
+
+    <TableRow
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
+        android:layout_width="fill_parent"
+        android:layout_height="260dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/summary_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/summary_textView">
+
+        <TextView
+            android:id="@+id/address1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="start"
+            android:maxLines="10"
+            android:singleLine="false"
+            android:text="Fahrenheit 451 is a dystopian novel by American writer Ray Bradbury, first published in 1953. Often regarded as one of his best works,[4] the novel presents a future American society where books are outlawed and firemen burn any that are found.[5] The book's tagline explains the title: Fahrenheit 451 – the temperature at which book paper catches fire, and burns... The lead character, Guy Montag, is a fireman who becomes disillusioned with his role of censoring literature and destroying knowledge, eventually quitting his job and committing himself to the preservation of literary and cultural writings." />
+    </TableRow>
 
     //butttons ---------------------------------------------------------------------
 
     <Button
-        android:id="@+id/add_book"
+        android:id="@+id/show_reviews"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -182,29 +187,28 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#2196F3"
-        android:text="@string/add_Book"
+        android:text="@string/show_reviews"
+        android:onClick="displayReviews"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/cancel"
+        app:layout_constraintEnd_toStartOf="@+id/add_review"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText7" />
 
     <Button
-        android:id="@+id/cancel"
+        android:id="@+id/add_review"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#F44336"
-        android:text="@string/cancel"
-        android:onClick="cancel"
+        android:backgroundTint="#2196F3"
+        android:onClick="addReview"
+        android:text="@string/add_review"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/add_book"
+        app:layout_constraintStart_toEndOf="@+id/show_reviews"
         app:layout_constraintTop_toBottomOf="@+id/editText7" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

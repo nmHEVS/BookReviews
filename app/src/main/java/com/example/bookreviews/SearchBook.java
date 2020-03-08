@@ -14,6 +14,8 @@ public class SearchBook extends AppCompatActivity {
 
         //Show list of all books
 
+
+
         Spinner spinner = (Spinner) findViewById(R.id.search_by_spinner);
         //Create array adapter
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,

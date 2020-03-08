@@ -19,6 +19,7 @@
         <activity android:name=".ShowAllBooks"/>
         <activity android:name=".SearchBook"/>
         <activity android:name=".AddBook"/>
+        <activity android:name=".ShowBook"/>
     </application>
 
 </manifest>
