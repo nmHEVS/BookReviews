@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:id="@+id/lisview_books"
+        android:id="@+id/allbooks_array"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"

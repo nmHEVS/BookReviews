@@ -29,4 +29,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_bar"/>
 
+    <ListView
+        android:id="@+id/allbooks_array"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
