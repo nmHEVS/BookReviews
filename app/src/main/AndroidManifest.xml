@@ -20,6 +20,9 @@
         <activity android:name=".SearchBook"/>
         <activity android:name=".AddBook"/>
         <activity android:name=".ShowBook"/>
+        <activity android:name=".ShowAllReviews"/>
+        <activity android:name=".ShowReview"/>
+
     </application>
 
 </manifest>

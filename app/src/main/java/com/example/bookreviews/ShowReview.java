@@ -6,18 +6,22 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import static com.example.bookreviews.R.layout.activity_display_review;
 
 
-public class ShowBook extends AppCompatActivity {
+
+public class ShowReview extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_book);
+        setContentView(activity_display_review);
+
     }
 
-    /** Called when click on display Reviews*/
-    public void displayAllReviews(View view) {
-        Intent intent = new Intent(this, ShowAllReviews.class);
+
+    /** Called when click on a review*/
+    public void displayReview(View view) {
+        Intent intent = new Intent(this, ShowAllBooks.class);
         startActivity(intent);
     }
 }

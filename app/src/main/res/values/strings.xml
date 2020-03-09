@@ -7,6 +7,8 @@
     <string name="add_Book">Add a book</string>
     <string name="add_review">Add a review</string>
     <string name="show_reviews">Show reviews</string>
+    <string name="update_book">Update</string>
+    <string name="delete_book">Delete</string>
     <string name="cancel">Cancel</string>
 
 
@@ -27,15 +29,23 @@
         <item>Author</item>
     </string-array>
 
+    <string-array name="allbooks_array">
+        <item>Fahrenheit 451</item>
+        <item>Lord of Chaos</item>
+        <item>Lord of the Ring</item>
+        <item>Colour out from Space</item>
+    </string-array>
+
+    <string-array name="allreviews_array">
+        <item>Toto_451</item>
+        <item>Chris666</item>
+        <item>Lord_of_the_Reviews</item>
+    </string-array>
+
     <!-- Activities -->
     <string name="allBooks_A">All the books</string>
     <string name="search_A">Search a book</string>
     <string name="add_A">Add a book</string>
 
-    <string-array name="allbooks_array">
-        <item>Fahrenheit 451</item>
-        <item>Lord of Chaos</item>
-        <item>Lord of the Ring</item>
-        <item>Colour out from Sapce</item>
-    </string-array>
+
 </resources>
