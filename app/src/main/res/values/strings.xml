@@ -1,9 +1,3 @@
 <resources>
     <string name="app_name">BookReviews</string>
-    <string-array name="books_array">
-        <item>Fahrenheit 451</item>
-        <item>Lord of Chaos</item>
-        <item>Lord of the Ring</item>
-        <item>Colour Out of Space</item>
-    </string-array>
 </resources>
