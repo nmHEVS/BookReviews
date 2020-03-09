@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
+
+
+
 
     <include
         android:id="@+id/app_bar"
@@ -65,101 +68,97 @@
         app:layout_constraintTop_toBottomOf="@+id/grade_textView" />
 
 
-    //-------------------------------------------------------------------------------------------------------------------
+    // edit text ---------------------------------------------------------------------------------------
 
-    <TextView
-        android:id="@+id/title"
+
+    <EditText
+        android:id="@+id/editText"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:text="Fahranheit 451"
-        android:textSize="24sp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/title_textView"
         app:layout_constraintTop_toBottomOf="@+id/app_bar" />
 
-    <TextView
-        android:id="@+id/reviewer"
+    <EditText
+        android:id="@+id/editText2"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Chris666"
-        android:textSize="24sp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/reviewer_textView"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
 
-    <TextView
-        android:id="@+id/grade"
+    <EditText
+        android:id="@+id/editText4"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="4"
-        android:textSize="24sp"
+        android:ems="10"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/grade_textView"
-        app:layout_constraintTop_toBottomOf="@+id/reviewer" />
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
-    <TableRow
-        android:id="@+id/tableRow"
-        android:layout_width="fill_parent"
+    <EditText
+        android:id="@+id/editText7"
+        android:layout_width="0dp"
         android:layout_height="300dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/review_textView">
-        <TextView
-            android:id="@+id/address1"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="start"
-            android:maxLines="10"
-            android:singleLine="false"
-            android:text="This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. " />
-    </TableRow>
+        app:layout_constraintTop_toBottomOf="@+id/review_textView" />
 
 
     //butttons
     --------------------------------------------------------------------------------------------------------
 
     <Button
-        android:id="@+id/update_review"
+        android:id="@+id/add_review"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#FF9800"
-        android:onClick="updateReview"
-        android:text="@string/update_book"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/delete_book"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:backgroundTint="#2196F3"
+        android:onClick="addReview"
+        android:text="@string/add"
+        app:layout_constraintEnd_toStartOf="@+id/cancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText7" />
 
     <Button
-        android:id="@+id/delete_book"
+        android:id="@+id/cancel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:backgroundTint="#F44336"
-        android:onClick="deleteBook"
-        android:text="@string/delete_book"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:onClick="cancel"
+        android:text="@string/cancel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/update_review" />
-
-
+        app:layout_constraintStart_toEndOf="@+id/add_review"
+        app:layout_constraintTop_toBottomOf="@+id/editText7" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

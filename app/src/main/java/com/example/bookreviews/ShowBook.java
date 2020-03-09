@@ -20,4 +20,19 @@ public class ShowBook extends AppCompatActivity {
         Intent intent = new Intent(this, ShowAllReviews.class);
         startActivity(intent);
     }
+
+    /** Called when click on update book*/
+    public void updateBook(View view) {
+
+        //todo : Récupérer les infos du livre pour préremplir les champs
+
+        Intent intent = new Intent(this, AddBook.class);
+        startActivity(intent);
+    }
+
+    /** Called when click on display Reviews*/
+    public void addReview(View view) {
+        Intent intent = new Intent(this, AddReview.class);
+        startActivity(intent);
+    }
 }

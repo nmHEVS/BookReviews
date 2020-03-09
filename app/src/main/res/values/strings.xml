@@ -10,6 +10,7 @@
     <string name="update_book">Update</string>
     <string name="delete_book">Delete</string>
     <string name="cancel">Cancel</string>
+    <string name="add">Add</string>
 
 
     <!-- Text fields -->
@@ -21,6 +22,11 @@
     <string name="publication_date">Year of publication :</string>
     <string name="summary">Plot summary :</string>
     <string name="book_example">Farenheit 451   R. Bradburry    4.5</string> //to do : search + concat
+
+    <string name="book">Book :</string>
+    <string name="reviewer">Reviewer :</string>
+    <string name="grade">Grade :</string>
+    <string name="review">Review :</string>
 
 
     <!-- Text array -->

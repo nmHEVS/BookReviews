@@ -19,9 +19,13 @@ public class ShowReview extends AppCompatActivity {
     }
 
 
-    /** Called when click on a review*/
-    public void displayReview(View view) {
-        Intent intent = new Intent(this, ShowAllBooks.class);
+    /** Called when click on update review*/
+    public void updateReview(View view) {
+
+        //todo : Récupérer les infos de la review pour préremplir les champs
+
+        Intent intent = new Intent(this, AddReview.class);
         startActivity(intent);
     }
+
 }
