@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +24,16 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()) {
+            case R.id.action_settings:
+                Intent intent = new Intent(this, ChangeSettings.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     /** Called when click on Show all Books*/
     public void displayAllBooks(View view) {
@@ -41,6 +52,4 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddBook.class);
         startActivity(intent);
     }
-
-
 }

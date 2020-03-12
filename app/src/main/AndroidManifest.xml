@@ -23,6 +23,7 @@
         <activity android:name=".ShowAllReviews"/>
         <activity android:name=".ShowReview"/>
         <activity android:name=".AddReview"/>
+        <activity android:name=".ChangeSettings"/>
 
     </application>
 

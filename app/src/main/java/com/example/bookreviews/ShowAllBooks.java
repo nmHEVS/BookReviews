@@ -3,6 +3,8 @@ package com.example.bookreviews;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -11,12 +13,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class ShowAllBooks extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_all_books);
+        Toolbar toolbar = findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
 
         final String[] books = getResources().getStringArray(R.array.allbooks_array);
         ListView list;
@@ -64,5 +69,30 @@ public class ShowAllBooks extends AppCompatActivity {
     public void displayBook(View view) {
         Intent intent = new Intent(this, ShowBook.class);
         startActivity(intent);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.activity__all_books_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        Intent intent;
+        switch(item.getItemId()) {
+            case R.id.action_settings:
+                intent = new Intent(this, ChangeSettings.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_searchBooks:
+                intent = new Intent(this, SearchBook.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_addBook:
+                intent = new Intent(this, AddBook.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
