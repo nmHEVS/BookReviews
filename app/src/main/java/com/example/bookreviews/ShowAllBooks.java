@@ -72,7 +72,7 @@ public class ShowAllBooks extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.activity__all_books_menu, menu);
+        getMenuInflater().inflate(R.menu.activity_all_books_menu, menu);
         return true;
     }
 

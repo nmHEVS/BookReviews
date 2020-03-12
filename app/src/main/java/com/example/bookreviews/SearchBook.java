@@ -34,7 +34,7 @@ public class SearchBook extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.activity__search_book_menu, menu);
+        getMenuInflater().inflate(R.menu.activity_search_book_menu, menu);
         return true;
     }
 
