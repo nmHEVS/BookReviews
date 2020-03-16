@@ -8,17 +8,23 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
 public class SearchBook extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //set light or dark mode
+        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
+            setTheme(R.style.DarkTheme);
+        else
+            setTheme(R.style.LightTheme);
+
         setContentView(R.layout.activity_search_book);
         Toolbar toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         //Show list of all books
-
 
 
         Spinner spinner = (Spinner) findViewById(R.id.search_by_spinner);

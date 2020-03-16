@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="?attr/bgColor">
 
     <include
         android:id="@+id/app_bar"
@@ -21,7 +22,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:text="@string/book"
-        android:textColor="#000000"
+        android:textColor="?attr/textColor"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_bar" />
@@ -34,7 +35,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/reviewer"
-        android:textColor="#000000"
+        android:textColor="?attr/textColor"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_textView" />
@@ -46,7 +47,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/grade"
-        android:textColor="#000000"
+        android:textColor="?attr/textColor"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reviewer_textView" />
@@ -59,7 +60,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/review"
-        android:textColor="#000000"
+        android:textColor="?attr/textColor"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/grade_textView" />
@@ -76,6 +77,7 @@
         android:layout_marginEnd="16dp"
         android:text="Fahranheit 451"
         android:textSize="24sp"
+        android:textColor="?attr/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/title_textView"
         app:layout_constraintTop_toBottomOf="@+id/app_bar" />
@@ -89,6 +91,7 @@
         android:layout_marginEnd="16dp"
         android:text="Chris666"
         android:textSize="24sp"
+        android:textColor="?attr/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/reviewer_textView"
@@ -103,6 +106,7 @@
         android:layout_marginEnd="16dp"
         android:text="4"
         android:textSize="24sp"
+        android:textColor="?attr/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/grade_textView"
@@ -115,6 +119,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:textColor="?attr/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/review_textView">
@@ -125,6 +130,7 @@
             android:gravity="start"
             android:maxLines="10"
             android:singleLine="false"
+            android:textColor="?attr/textColor"
             android:text="This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. " />
     </TableRow>
 

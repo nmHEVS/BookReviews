@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="?attr/bgColor">
 
     <include
     android:id="@+id/app_bar"
@@ -47,8 +48,10 @@
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:backgroundTint="?attr/bg2Color"
         android:onClick="displayAllBooks"
         android:text="@string/allBooks"
+        android:textColor="?attr/textColor"
         app:layout_constraintBottom_toTopOf="@+id/search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
@@ -60,7 +63,9 @@
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:onClick="searchBook"
+        android:backgroundTint="?attr/bg2Color"
         android:text="@string/search"
+        android:textColor="?attr/textColor"
         app:layout_constraintBottom_toTopOf="@+id/addBook"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
@@ -71,8 +76,10 @@
         android:id="@+id/addBook"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="?attr/bg2Color"
         android:onClick="addBook"
         android:text="@string/add_Book"
+        android:textColor="?attr/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"

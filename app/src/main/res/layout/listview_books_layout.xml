@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/bgColor">
     <TextView
         android:id="@+id/allbooks_array"
         android:layout_width="match_parent"
@@ -13,6 +14,7 @@
         android:singleLine="true"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="?attr/textColor"
         android:layout_margin="2dp"/>
 
 </LinearLayout>

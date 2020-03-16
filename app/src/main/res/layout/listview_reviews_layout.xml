@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/bgColor">
 
     <TextView
         android:id="@+id/allreviews_array"
@@ -13,6 +14,7 @@
         android:singleLine="true"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="?attr/textColor"
         android:layout_margin="2dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
