@@ -32,4 +32,8 @@ public interface BookDao {
     @Delete
     void delete(BookEntity book);
 
+    @Query("DELETE FROM books")
+    void deleteAll();
+
+
 }

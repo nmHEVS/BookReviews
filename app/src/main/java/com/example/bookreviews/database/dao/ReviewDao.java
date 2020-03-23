@@ -23,6 +23,9 @@ public interface ReviewDao {
     @Query("SELECT * FROM reviews WHERE id_book = :id_book AND author = :author")
     LiveData<ReviewEntity> getReview(long id_book, String author);
 
+    @Query("SELECT avg(grade) FROM reviews WHERE id_book = :id_book")
+    LiveData<ReviewEntity> getAvgGrade(long id_book);
+
     @Insert
     void insert(ReviewEntity review) throws SQLiteConstraintException;
 
@@ -31,5 +34,8 @@ public interface ReviewDao {
 
     @Delete
     void delete(ReviewEntity review);
+
+    @Query("DELETE FROM reviews")
+    void deleteAll();
 
 }

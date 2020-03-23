@@ -15,18 +15,18 @@ public class ReviewEntity {
     private Long id_book;
 
     @ColumnInfo(name = "grade")
-    private float grade;
+    private double grade;
 
     @ColumnInfo(name = "author")
     private String author;
 
     @ColumnInfo(name = "date")
-    private int date;
+    private String date;
 
     @ColumnInfo(name = "review")
     private String review;
 
-    public ReviewEntity(@NonNull long id_book, float grade, String author, int date, String review){
+    public ReviewEntity(@NonNull long id_book, double grade, String author, String date, String review){
         this.id_book = id_book;
         this.grade = grade;
         this.author = author;
@@ -42,11 +42,11 @@ public class ReviewEntity {
         this.id_book = id_book;
     }
 
-    public float getGrade() {
+    public double getGrade() {
         return grade;
     }
 
-    public void setGrade(float grade) {
+    public void setGrade(double grade) {
         this.grade = grade;
     }
 
@@ -58,11 +58,11 @@ public class ReviewEntity {
         this.author = author;
     }
 
-    public int getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
