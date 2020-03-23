@@ -18,7 +18,7 @@ public interface BookDao {
 
     //Select all the book's title
     @Query("SELECT title FROM books")
-    LiveData<List<BookEntity>> getAllTitle();
+    LiveData<List<String>> getAllTitle();
 
     @Query("SELECT * FROM books WHERE id = :id")
     LiveData<BookEntity> getById(Long id);

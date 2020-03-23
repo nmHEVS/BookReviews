@@ -18,13 +18,13 @@ public interface ReviewDao {
 
     //Get all author of reviews for one single book
     @Query("SELECT author FROM reviews WHERE id_book = :id_book")
-    LiveData<List<ReviewEntity>> getByIdBook(long id_book);
+    LiveData<List<String>> getByIdBook(long id_book);
 
     @Query("SELECT * FROM reviews WHERE id_book = :id_book AND author = :author")
     LiveData<ReviewEntity> getReview(long id_book, String author);
 
     @Query("SELECT avg(grade) FROM reviews WHERE id_book = :id_book")
-    LiveData<ReviewEntity> getAvgGrade(long id_book);
+    LiveData<List<String>> getAvgGrade(long id_book);
 
     @Insert
     void insert(ReviewEntity review) throws SQLiteConstraintException;

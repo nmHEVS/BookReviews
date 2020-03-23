@@ -3,9 +3,23 @@ package com.example.bookreviews.database.entity;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "reviews")
+@Entity(tableName = "reviews",
+        foreignKeys =
+        @ForeignKey(
+                entity = BookEntity.class,
+                parentColumns = "id",
+                childColumns = "id_book",
+                onDelete = ForeignKey.CASCADE
+        ),
+        indices = {
+        @Index(
+                value = {"id_book"}
+        )}
+)
 public class ReviewEntity {
 
     @PrimaryKey(autoGenerate = true)
@@ -76,5 +90,9 @@ public class ReviewEntity {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

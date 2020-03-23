@@ -89,4 +89,8 @@ public class BookEntity {
     public void setPlotSummary(String plotSummary) {
         this.plotSummary = plotSummary;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
