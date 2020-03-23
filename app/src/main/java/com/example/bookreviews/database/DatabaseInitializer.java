@@ -42,7 +42,7 @@ public class DatabaseInitializer {
                         "The novel is divided into three parts: \"The Hearth and the Salamander\", " +
                         "\"The Sieve and the Sand\", and \"Burning Bright\". ");
 
-        addReview(db, 1, 4.5, "Toto", "23.03.2020", "C'est OK");
+        addReview(db, 1, 4, "Toto", "23.03.2020", "C'est OK");
     }
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {

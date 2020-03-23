@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
-import static com.example.bookreviews.R.layout.activity_display_review;
 
 
 
@@ -24,7 +23,7 @@ public class ShowReview extends AppCompatActivity {
         else
             setTheme(R.style.LightTheme);
 
-        setContentView(activity_display_review);
+        setContentView(R.layout.activity_display_review);
         Toolbar toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
     }

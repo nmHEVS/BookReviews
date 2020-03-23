@@ -25,7 +25,7 @@ public class ChangeSettings extends AppCompatActivity {
     }
 
 
-
+    /** Called when click on the dark/light mode */
     public void changeTheme(View v) {
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -37,26 +37,17 @@ public class ChangeSettings extends AppCompatActivity {
         startActivity(new Intent(ChangeSettings.this, ChangeSettings.this.getClass()));
     }
 
-    /** Called when click on Search a Book*/
+    /** Called when click on Apply settings : */
     public void applyMode(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-
-/*
-    Switch s = (Switch) findViewById(R.id.switchDarkMode);
-
-
-    public void darkMode(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        }
-
-        finish();
-        startActivity(new Intent(ChangeSettings.this, ChangeSettings.this.getClass()));
+    /** Called when click on information*/
+    public void displayAbout(View view) {
+        Intent intent = new Intent(this, About.class);
+        startActivity(intent);
     }
-*/
+
+
 }

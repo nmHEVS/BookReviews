@@ -15,28 +15,51 @@
     app:layout_constraintHorizontal_bias="1.0"
     app:layout_constraintStart_toStartOf="parent"/>
 
+
     <TextView
         android:id="@+id/tvDarkMode"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
-        android:text="@string/darkMode"
-        android:textSize="24sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:gravity="left"
         android:onClick="changeTheme"
-        android:textColor="?attr/metaTextColor"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="?attr/themeName"
+        android:textColor="?attr/textColor"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/app_bar" />
 
-    <Switch
-        android:id="@+id/switchDarkMode"
-        android:layout_width="wrap_content"
+
+    <TextView
+        android:id="@+id/about"
+        android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:checked="false"
+        android:clickable="true"
+        android:gravity="left"
+        android:onClick="displayAbout"
+        android:text="@string/about"
+        android:textColor="?attr/textColor"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_bar" />
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/tvDarkMode" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_bar"
+        app:srcCompat="?attr/iconName" />
 
     <Button
         android:id="@+id/button"
@@ -53,6 +76,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:srcCompat="@drawable/question" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

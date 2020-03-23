@@ -22,7 +22,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:text="@string/book"
-        android:textColor="?attr/textColor"
+        android:textColor="?attr/metaTextColor"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_bar" />
@@ -35,10 +35,22 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/reviewer"
-        android:textColor="?attr/textColor"
+        android:textColor="?attr/metaTextColor"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_textView" />
+
+    <TextView
+        android:id="@+id/date_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/date"
+        android:textColor="?attr/metaTextColor"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reviewer_textView" />
 
     <TextView
         android:id="@+id/grade_textView"
@@ -47,10 +59,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/grade"
-        android:textColor="?attr/textColor"
+        android:textColor="?attr/metaTextColor"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reviewer_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/date_textView" />
 
 
     <TextView
@@ -58,9 +70,9 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="@string/review"
-        android:textColor="?attr/textColor"
+        android:textColor="?attr/metaTextColor"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/grade_textView" />
@@ -98,6 +110,21 @@
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
+        android:id="@+id/date"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="05.03.2020"
+        android:textSize="24sp"
+        android:textColor="?attr/textColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/grade_textView"
+        app:layout_constraintTop_toBottomOf="@+id/reviewer" />
+
+    <TextView
         android:id="@+id/grade"
         android:layout_width="0dp"
         android:layout_height="40dp"
@@ -109,13 +136,13 @@
         android:textColor="?attr/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/grade_textView"
-        app:layout_constraintTop_toBottomOf="@+id/reviewer" />
+        app:layout_constraintStart_toEndOf="@+id/date_textView"
+        app:layout_constraintTop_toBottomOf="@+id/date" />
 
     <TableRow
         android:id="@+id/tableRow"
         android:layout_width="fill_parent"
-        android:layout_height="300dp"
+        android:layout_height="280dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -123,15 +150,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/review_textView">
+
         <TextView
             android:id="@+id/address1"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:gravity="start"
             android:maxLines="10"
             android:singleLine="false"
-            android:textColor="?attr/textColor"
-            android:text="This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. " />
+            android:text="This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. This book is shit. "
+            android:textColor="?attr/textColor" />
     </TableRow>
 
 

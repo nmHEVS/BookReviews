@@ -11,15 +11,21 @@
     <style name="LightTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="textColor">#000000</item>
         <item name="metaTextColor">#606060</item>
-        <item name="bg2Color">#A8A8A8</item>
+        <item name="bg3Color">#BFC8C8C8</item>
+        <item name="bg2Color">#BEF60000</item>
         <item name="bgColor">#ffffff</item>
+        <item name="themeName">Dark Mode</item>
+        <item name="iconName">@drawable/dark_mode_icon</item>
     </style>
 
     <style name="DarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="textColor">#ffffff</item>
-        <item name="metaTextColor">#aeaeae</item>
-        <item name="bg2Color">#333333</item>
-        <item name="bgColor">#000000</item>
+        <item name="metaTextColor">#919191</item>
+        <item name="bg3Color">#BF282828</item>
+        <item name="bg2Color">#FF4545</item>
+        <item name="bgColor">#141414</item>
+        <item name="themeName">Light Mode</item>
+        <item name="iconName">@drawable/light_mode_icon</item>
     </style>
 
 </resources>

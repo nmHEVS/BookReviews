@@ -3,7 +3,10 @@
 <resources>
     <attr name="bgColor" format="color"/>
     <attr name="bg2Color" format="color"/>
+    <attr name="bg3Color" format="color"/>
     <attr name="textColor" format="color"/>
     <attr name="metaTextColor" format="color"/>
+    <attr name="themeName" format="string"/>
+    <attr name="iconName" format="reference"/>
 
 </resources>

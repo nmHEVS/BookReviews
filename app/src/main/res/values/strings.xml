@@ -12,24 +12,38 @@
     <string name="cancel">Cancel</string>
     <string name="add">Add</string>
     <string name="apply">Apply Settings</string>
+    <string name="about">Information</string>
 
 
     <!-- Text fields -->
     <string name="search_by">Search by</string>
-    <string name="title">Title :</string>
-    <string name="author">Author :</string>
-    <string name="edition">Edition :</string>
-    <string name="category">Category :</string>
-    <string name="publication_date">Year of publication :</string>
-    <string name="summary">Plot summary :</string>
+    <string name="title">Title </string>
+    <string name="author">Author </string>
+    <string name="edition">Edition </string>
+    <string name="category">Category </string>
+    <string name="publication_date">Year of publication </string>
+    <string name="summary">Plot summary </string>
     <string name="book_example">Farenheit 451   R. Bradburry    4.5</string> //to do : search + concat
 
-    <string name="book">Book :</string>
-    <string name="reviewer">Reviewer :</string>
-    <string name="grade">Grade :</string>
-    <string name="review">Review :</string>
+    <string name="book">Book </string>
+    <string name="reviewer">Reviewer </string>
+    <string name="grade">Grade </string>
+    <string name="review">Review </string>
+    <string name="date">Date </string>
 
-    <string name="darkMode">Dark mode</string>
+    <string name="version">Version 1.2.8 </string>
+    <string name="creator">Creators : Artero C. - Micheloud N. </string>
+    <string name="loremIpsum">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.
+Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.
+Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.
+Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.
+Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.
+Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.
+Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.
+    </string>
 
 
     <!-- Text array -->

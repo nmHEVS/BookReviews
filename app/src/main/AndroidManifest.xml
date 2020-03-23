@@ -24,6 +24,8 @@
         <activity android:name=".ShowReview"/>
         <activity android:name=".AddReview"/>
         <activity android:name=".ChangeSettings"/>
+        <activity android:name=".About"/>
+
 
     </application>
 
