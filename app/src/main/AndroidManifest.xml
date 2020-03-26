@@ -9,22 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ShowAllBooks"/>
-        <activity android:name=".SearchBook"/>
-        <activity android:name=".AddBook"/>
-        <activity android:name=".ShowBook"/>
-        <activity android:name=".ShowAllReviews"/>
-        <activity android:name=".ShowReview"/>
-        <activity android:name=".AddReview"/>
-        <activity android:name=".ChangeSettings"/>
-        <activity android:name=".About"/>
+        <activity android:name=".ui.ShowAllBooks"/>
+        <activity android:name=".ui.SearchBook"/>
+        <activity android:name=".ui.AddBook"/>
+        <activity android:name=".ui.ShowBook"/>
+        <activity android:name=".ui.ShowAllReviews"/>
+        <activity android:name=".ui.ShowReview"/>
+        <activity android:name=".ui.AddReview"/>
+        <activity android:name=".ui.ChangeSettings"/>
+        <activity android:name=".ui.About"/>
 
 
     </application>

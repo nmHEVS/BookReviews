@@ -1,4 +1,4 @@
-package com.example.bookreviews;
+package com.example.bookreviews.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.bookreviews.R;
 
 
-
-public class ShowReview extends AppCompatActivity {
+public class ShowBook extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,17 +23,29 @@ public class ShowReview extends AppCompatActivity {
         else
             setTheme(R.style.LightTheme);
 
-        setContentView(R.layout.activity_display_review);
+        setContentView(R.layout.activity_display_book);
         Toolbar toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
+
     }
 
+    /** Called when click on display Reviews*/
+    public void displayAllReviews(View view) {
+        Intent intent = new Intent(this, ShowAllReviews.class);
+        startActivity(intent);
+    }
 
-    /** Called when click on update review*/
-    public void updateReview(View view) {
+    /** Called when click on update book*/
+    public void updateBook(View view) {
 
-        //todo : Récupérer les infos de la review pour préremplir les champs
+        //todo : Récupérer les infos du livre pour préremplir les champs
 
+        Intent intent = new Intent(this, AddBook.class);
+        startActivity(intent);
+    }
+
+    /** Called when click on display Reviews*/
+    public void addReview(View view) {
         Intent intent = new Intent(this, AddReview.class);
         startActivity(intent);
     }
@@ -66,5 +78,4 @@ public class ShowReview extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
 }

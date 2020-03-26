@@ -33,6 +33,7 @@ public class DatabaseInitializer {
         db.bookDao().deleteAll();
         db.reviewDao().deleteAll();
 
+        //poopulate books
         addBook(db, "Fahrenheit 451", "Ray Bradbury", "Ballantine Books",
                 "Dystopian", 1953,
                 "Fahrenheit 451 is set in an unspecified city (likely in the American" +
@@ -50,6 +51,8 @@ public class DatabaseInitializer {
                 "Adventure", 1851,
                 "Ishmael travels in December from Manhattan Island to New Bedford, Massachusetts with plans to sign up for a whaling voyage. The inn where he arrives is overcrowded, so he must share a bed with the tattooed cannibal Polynesian Queequeg, a harpooneer whose father was king of the fictional island of Rokovoko. The next morning, Ishmael and Queequeg attend Father Mapple's sermon on Jonah, then head for Nantucket. Ishmael signs up with the Quaker ship-owners Bildad and Peleg for a voyage on their whaler Pequod. Peleg describes Captain Ahab: He's a grand, ungodly, god-like man who nevertheless has his humanities. They hire Queequeg the following morning. A man named Elijah prophesies a dire fate should Ishmael and Queequeg join Ahab. While provisions are loaded, shadowy figures board the ship. On a cold Christmas Day, the Pequod leaves the harbor.");
 
+
+        //populate reviews
         addReview(db, 1, 4, "Toto", "23.03.2020", "C'est OK");
         addReview(db, 1, 5, "chris666", "22.03.2020", "C'est bien");
         addReview(db, 2, 4, "Toto", "24.03.2020", "C'est pas mal");

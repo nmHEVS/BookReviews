@@ -1,15 +1,13 @@
-package com.example.bookreviews;
+package com.example.bookreviews.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.Switch;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+
+import com.example.bookreviews.R;
 
 public class ChangeSettings extends AppCompatActivity {
     @Override

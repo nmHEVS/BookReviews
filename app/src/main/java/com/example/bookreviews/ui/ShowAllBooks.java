@@ -1,7 +1,9 @@
-package com.example.bookreviews;
+package com.example.bookreviews.ui;
 
+import android.accounts.Account;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,8 +17,28 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.bookreviews.R;
+import com.example.bookreviews.adapter.RecyclerAdapter;
+import com.example.bookreviews.database.entity.BookEntity;
+import com.example.bookreviews.util.RecyclerViewItemClickListener;
+import com.example.bookreviews.viewmodel.BookListViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShowAllBooks extends AppCompatActivity {
+
+    private static final String TAG = "BooksActivity";
+
+    private List<BookEntity> books;
+    private RecyclerAdapter<BookEntity> adapter;
+    private BookListViewModel viewModel;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +47,18 @@ public class ShowAllBooks extends AppCompatActivity {
             setTheme(R.style.DarkTheme);
         else
             setTheme(R.style.LightTheme);
+
+        RecyclerView recyclerView = findViewById(R.id.booksRecyclerView);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                LinearLayoutManager.VERTICAL);
+        recyclerView.addItemDecoration(dividerItemDecoration);
+
+        books = new ArrayList<>();
+
 
         setContentView(R.layout.activity_display_all_books);
         Toolbar toolbar = findViewById(R.id.app_bar);
@@ -56,17 +90,17 @@ public class ShowAllBooks extends AppCompatActivity {
         };
 
         //ListView
-        list = (ListView) findViewById(R.id.allbooks_array);
+        /*list = (ListView) findViewById(R.id.allbooks_array);
         list.setAdapter(adapter);
 
-        //ListView handler
+        ListView handler
         list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 displayBook(view);
             }
-        });
+        });*/
         //Show list of all books
 
 

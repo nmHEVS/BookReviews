@@ -5,7 +5,11 @@ import android.content.Context;
 import androidx.lifecycle.LiveData;
 
 import com.example.bookreviews.database.AppDatabase;
+import com.example.bookreviews.database.async.CreateBook;
+import com.example.bookreviews.database.async.DeleteBook;
+import com.example.bookreviews.database.async.UpdateBook;
 import com.example.bookreviews.database.entity.BookEntity;
+import com.example.bookreviews.util.OnAsyncEventListener;
 
 import java.util.List;
 
@@ -30,9 +34,22 @@ public class BookRepository {
         return AppDatabase.getInstance(context).bookDao().getById(id);
     }
 
-    public LiveData<List<String>> getAllBooks(Context context){
-        return AppDatabase.getInstance(context).bookDao().getAllTitle();
+    public LiveData<List<BookEntity>> getAllBooks(Context context){
+        return AppDatabase.getInstance(context).bookDao().getAllBooks();
     }
 
+    /*
+    public void insert(final BookEntity book, OnAsyncEventListener callback, Context context){
+        new CreateBook(context, callback).execute(book);
+    }
 
+    public void update(final BookEntity book, OnAsyncEventListener callback, Context context){
+        new UpdateBook(context, callback).execute(book);
+    }
+
+    public void delete(final BookEntity book, OnAsyncEventListener callback, Context context){
+        new DeleteBook(context, callback).execute(book);
+    }
+
+     */
 }

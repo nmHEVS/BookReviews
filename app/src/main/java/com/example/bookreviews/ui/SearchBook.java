@@ -1,4 +1,4 @@
-package com.example.bookreviews;
+package com.example.bookreviews.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+
+import com.example.bookreviews.R;
 
 public class SearchBook extends AppCompatActivity {
     @Override

@@ -93,4 +93,14 @@ public class BookEntity {
     public void setId(Long id) {
         this.id = id;
     }
+
+
+    @Override
+    public boolean equals(Object obj){
+        if (obj == null) return false;
+        if (obj == this) return true;
+        if(!(obj instanceof  BookEntity)) return false;
+        BookEntity o = (BookEntity) obj;
+        return o.getAuthor().equals(this.getAuthor());
+    }
 }

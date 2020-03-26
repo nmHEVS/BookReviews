@@ -1,4 +1,4 @@
-package com.example.bookreviews;
+package com.example.bookreviews.ui;
 
 import android.app.Activity;
 import android.view.View;

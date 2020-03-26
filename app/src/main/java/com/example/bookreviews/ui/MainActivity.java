@@ -1,4 +1,4 @@
-package com.example.bookreviews;
+package com.example.bookreviews.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.example.bookreviews.R;
 
 public class MainActivity extends AppCompatActivity {
 

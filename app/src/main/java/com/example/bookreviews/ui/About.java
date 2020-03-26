@@ -1,4 +1,4 @@
-package com.example.bookreviews;
+package com.example.bookreviews.ui;
 
 import android.os.Bundle;
 
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.bookreviews.R;
 
 
 public class About extends AppCompatActivity {

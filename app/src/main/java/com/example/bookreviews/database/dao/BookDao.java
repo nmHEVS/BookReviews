@@ -20,6 +20,9 @@ public interface BookDao {
     @Query("SELECT title FROM books")
     LiveData<List<String>> getAllTitle();
 
+    @Query("SELECT * FROM books")
+    LiveData<List<BookEntity>> getAllBooks();
+
     @Query("SELECT * FROM books WHERE id = :id")
     LiveData<BookEntity> getById(Long id);
 
