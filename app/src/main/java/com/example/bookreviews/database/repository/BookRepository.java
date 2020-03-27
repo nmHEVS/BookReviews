@@ -1,5 +1,6 @@
 package com.example.bookreviews.database.repository;
 
+import android.app.Application;
 import android.content.Context;
 
 import androidx.lifecycle.LiveData;
@@ -38,18 +39,18 @@ public class BookRepository {
         return AppDatabase.getInstance(context).bookDao().getAllBooks();
     }
 
-    /*
-    public void insert(final BookEntity book, OnAsyncEventListener callback, Context context){
-        new CreateBook(context, callback).execute(book);
+
+    public void insert(final BookEntity book, OnAsyncEventListener callback, Application application){
+        new CreateBook(application, callback).execute(book);
     }
 
-    public void update(final BookEntity book, OnAsyncEventListener callback, Context context){
-        new UpdateBook(context, callback).execute(book);
+    public void update(final BookEntity book, OnAsyncEventListener callback, Application application){
+        new UpdateBook(application, callback).execute(book);
     }
 
-    public void delete(final BookEntity book, OnAsyncEventListener callback, Context context){
-        new DeleteBook(context, callback).execute(book);
+    public void delete(final BookEntity book, OnAsyncEventListener callback, Application application){
+        new DeleteBook(application, callback).execute(book);
     }
 
-     */
+
 }

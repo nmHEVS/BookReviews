@@ -18,7 +18,7 @@ public class BookViewModel extends AndroidViewModel {
 
     private BookRepository repository;
 
-    private Context applicationContext;
+    private Application application;
 
     //
     private final MediatorLiveData<BookEntity> observableBook;
@@ -31,12 +31,12 @@ public class BookViewModel extends AndroidViewModel {
 
         repository = bookRepository;
 
-        applicationContext = application.getApplicationContext();
+        this.application = application;
 
         observableBook = new MediatorLiveData<>();
         observableBook.setValue(null);
 
-        LiveData<BookEntity> book = repository.getBook(id, applicationContext);
+        LiveData<BookEntity> book = repository.getBook(id, application);
 
         observableBook.addSource(book, observableBook::setValue);
     }
@@ -79,17 +79,17 @@ public class BookViewModel extends AndroidViewModel {
     public LiveData<BookEntity> getBook(){
         return observableBook;
     }
-/*
+
     public void createBook(BookEntity book, OnAsyncEventListener callBack){
-        repository.insert(book, callBack, applicationContext);
+        repository.insert(book, callBack, application);
     }
 
     public void updateBook(BookEntity book, OnAsyncEventListener callBack){
-        repository.update(book, callBack, applicationContext);
+        repository.update(book, callBack, application);
     }
 
     public void deleteBook(BookEntity book, OnAsyncEventListener callBack){
-        repository.delete(book, callBack, applicationContext);
-    }*/
+        repository.delete(book, callBack, application);
+    }
 
 }

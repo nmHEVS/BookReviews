@@ -1,5 +1,6 @@
 package com.example.bookreviews.database.repository;
 
+import android.app.Application;
 import android.content.Context;
 
 import androidx.lifecycle.LiveData;
@@ -36,6 +37,9 @@ public class ReviewRepository {
         return AppDatabase.getInstance(context).reviewDao().getByIdBook(id);
     }
 
+    public LiveData<List<ReviewEntity>> getAllReviewsForABook(final long id, Context context){
+        return AppDatabase.getInstance(context).reviewDao().getReviewsByIdBook(id);
+    }
     public LiveData<ReviewEntity> getReview(final long id_book, final String author, Context context){
         return AppDatabase.getInstance(context).reviewDao().getReview(id_book, author);
     }
@@ -44,17 +48,17 @@ public class ReviewRepository {
         return AppDatabase.getInstance(context).reviewDao().getAvgGrade(id_book);
     }
 
-    /*
-    public void insert(final ReviewEntity review, OnAsyncEventListener callback, Context context){
-        new CreateReview(context, callback).execute(review);
+
+    public void insert(final ReviewEntity review, OnAsyncEventListener callback, Application application){
+        new CreateReview(application, callback).execute(review);
     }
 
-    public void delete(final ReviewEntity review, OnAsyncEventListener callback, Context context){
-        new DeleteReview(context, callback).execute(review);
+    public void delete(final ReviewEntity review, OnAsyncEventListener callback, Application application){
+        new DeleteReview(application, callback).execute(review);
     }
 
-    public void insert(final ReviewEntity review, OnAsyncEventListener callback, Context context){
-        new UpdateReview(context, callback).execute(review);
+    public void update(final ReviewEntity review, OnAsyncEventListener callback, Application application){
+        new UpdateReview(application, callback).execute(review);
     }
-        */
+
 }

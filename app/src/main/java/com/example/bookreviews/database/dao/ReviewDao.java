@@ -20,6 +20,9 @@ public interface ReviewDao {
     @Query("SELECT author FROM reviews WHERE id_book = :id_book")
     LiveData<List<String>> getByIdBook(long id_book);
 
+    @Query("SELECT * FROM reviews WHERE id_book = :id_book")
+    LiveData<List<ReviewEntity>> getReviewsByIdBook(long id_book);
+
     @Query("SELECT * FROM reviews WHERE id_book = :id_book AND author = :author")
     LiveData<ReviewEntity> getReview(long id_book, String author);
 
