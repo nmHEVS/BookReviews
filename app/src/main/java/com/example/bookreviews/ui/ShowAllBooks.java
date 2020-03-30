@@ -1,22 +1,15 @@
 package com.example.bookreviews.ui;
 
-import android.accounts.Account;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bookreviews.R;
 import com.example.bookreviews.adapter.RecyclerAdapter;
 import com.example.bookreviews.database.entity.BookEntity;
+import com.example.bookreviews.database.repository.BookRepository;
 import com.example.bookreviews.util.RecyclerViewItemClickListener;
 import com.example.bookreviews.viewmodel.BookListViewModel;
 
@@ -35,6 +29,7 @@ public class ShowAllBooks extends AppCompatActivity {
     private static final String TAG = "BooksActivity";
 
     private List<BookEntity> books;
+    private BookRepository book_repository;
     private RecyclerAdapter<BookEntity> adapter;
     private BookListViewModel viewModel;
 
@@ -48,6 +43,8 @@ public class ShowAllBooks extends AppCompatActivity {
         else
             setTheme(R.style.LightTheme);
 
+
+
         RecyclerView recyclerView = findViewById(R.id.booksRecyclerView);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -58,15 +55,38 @@ public class ShowAllBooks extends AppCompatActivity {
         recyclerView.addItemDecoration(dividerItemDecoration);
 
         books = new ArrayList<>();
+        adapter = new RecyclerAdapter<>(new RecyclerViewItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position){
+                Intent intent = new Intent(ShowAllBooks.this, ShowBook.class);
+                startActivity(intent);
+            }
 
+            @Override
+            public void onItemLongClick(View v, int position){
+                Intent intent = new Intent(ShowAllBooks.this, ShowBook.class);
+                startActivity(intent);
+            }
+        });
 
         setContentView(R.layout.activity_display_all_books);
         Toolbar toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
-        final String[] books = getResources().getStringArray(R.array.allbooks_array);
-        ListView list;
 
+
+        BookListViewModel.Factory factory = new BookListViewModel.Factory(getApplication());
+        viewModel = ViewModelProviders.of(this, factory).get(BookListViewModel.class);
+        viewModel.getBooks().observe(this, bookEntities -> {
+            if(bookEntities!= null){
+                books = bookEntities;
+                adapter.setData(books);
+            }
+        });
+
+        recyclerView.setAdapter(adapter);
+
+/*
         ArrayAdapter<String>adapter = new ArrayAdapter<String>(this, R.layout.listview_books_layout, books){
             //Call for every entry in the ArrayAdapter
             @Override
@@ -88,7 +108,7 @@ public class ShowAllBooks extends AppCompatActivity {
                 return view;
             }
         };
-
+*/
         //ListView
         /*list = (ListView) findViewById(R.id.allbooks_array);
         list.setAdapter(adapter);
