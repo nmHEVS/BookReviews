@@ -8,14 +8,10 @@ public class SpinnerSearchByActivity extends Activity implements AdapterView.OnI
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        //action when title or author selected (2 different search mode)
-
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
-
 
     }
 }

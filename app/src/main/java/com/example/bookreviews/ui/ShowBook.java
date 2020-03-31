@@ -51,6 +51,7 @@ public class ShowBook extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
+        //get datas of the selected book
         Long bookId = getIntent().getLongExtra("bookId", 0L);
         String bookTitle = getIntent().getStringExtra("bookTitle");
         String bookAuthor = getIntent().getStringExtra("bookAuthor");
@@ -59,11 +60,13 @@ public class ShowBook extends AppCompatActivity {
         String bookPlotSummary = getIntent().getStringExtra("bookPlotSummary");
         int bookYearPublished = getIntent().getIntExtra("bookYearPublished", 0);
 
+        //create the book entity
         book = new BookEntity(bookTitle,bookAuthor,bookEdition,bookCategory,bookYearPublished,bookPlotSummary);
         book.setId(bookId);
 
         initiateView();
 
+        //create the book to display
         BookViewModel.Factory factory = new BookViewModel.Factory(getApplication(), bookId,
                 bookTitle,bookAuthor,bookEdition,bookCategory,bookYearPublished,bookPlotSummary);
         viewModel = ViewModelProviders.of(this, factory).get(BookViewModel.class);
@@ -76,6 +79,7 @@ public class ShowBook extends AppCompatActivity {
 
     }
 
+    //initialize the view of the book with the datas we have at first
     private void initiateView(){
         isEditable = false;
         etTitle = findViewById(R.id.title);
@@ -99,6 +103,7 @@ public class ShowBook extends AppCompatActivity {
         etPlotSummary.setFocusable(false);
     }
 
+    //switch the fields in editable mode to modify them
     private void switchEditableMode(){
         if(!isEditable){
             etTitle.setFocusable(true);
@@ -127,6 +132,7 @@ public class ShowBook extends AppCompatActivity {
 
             etTitle.requestFocus();
         }else{
+            //if the fields are in editable mode, put them back into view mode and save the changes in DB
             saveChanges(
                     etTitle.getText().toString(),
                     etAuthor.getText().toString(),
@@ -156,6 +162,7 @@ public class ShowBook extends AppCompatActivity {
         isEditable = !isEditable;
     }
 
+    //save the modified datas in the DB
     private void saveChanges(String title, String author, String category, String edition,
                              int yearPublished, String plotSummary){
         book.setTitle(title);
@@ -166,6 +173,7 @@ public class ShowBook extends AppCompatActivity {
         book.setPlotSummary(plotSummary);
 
         viewModel.updateBook(book, new OnAsyncEventListener() {
+            //write in the LOG if the book has been updated or not
             @Override
             public void onSuccess() {
                 Log.d(TAG, "updateBook: success");
@@ -181,21 +189,15 @@ public class ShowBook extends AppCompatActivity {
         });
     }
 
-
+    //Display a little message if the book has been updated or not
     private void setResponse(Boolean response) {
 
         if (response) {
-
             statusToast = Toast.makeText(this, "Update for the book OK", Toast.LENGTH_LONG);
-
             statusToast.show();
-
         } else {
-
             statusToast = Toast.makeText(this, "Error for the update", Toast.LENGTH_LONG);
-
             statusToast.show();
-
         }
 
     }
@@ -227,6 +229,7 @@ public class ShowBook extends AppCompatActivity {
     /** Called when click on delete book **/
     public void deleteBook(View v){
         viewModel.deleteBook(book, new OnAsyncEventListener() {
+            //write in the LOG if the book has been deleted or not
             @Override
             public void onSuccess() {
                 Log.d(TAG, "deleteBook: success");
@@ -250,11 +253,13 @@ public class ShowBook extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //Button displaying little navigation menu
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.activity_default_menu, menu);
         return true;
     }
 
+    //choose to go to settings or another page
     public boolean onOptionsItemSelected(MenuItem item){
         Intent intent;
         switch(item.getItemId()) {

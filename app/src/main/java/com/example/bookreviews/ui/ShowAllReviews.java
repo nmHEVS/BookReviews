@@ -57,6 +57,7 @@ public class ShowAllReviews extends AppCompatActivity {
         Long bookId = getIntent().getLongExtra("bookId", 0L);
         String bookTitle = getIntent().getStringExtra("bookTitle");
 
+        //create and set the layout for the recycler view to display the datas
         RecyclerView recyclerView = findViewById(R.id.reviewsRecyclerView);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -66,6 +67,7 @@ public class ShowAllReviews extends AppCompatActivity {
                 LinearLayoutManager.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
+        //create the onClick objets that display the datas
         reviews = new ArrayList<>();
         adapter = new RecyclerAdapter<>(new RecyclerViewItemClickListener() {
             @Override
@@ -93,9 +95,8 @@ public class ShowAllReviews extends AppCompatActivity {
             }
         });
 
-
+        //Create the list of reviews to display the name of the reviewer
         viewModel = new ReviewListViewModel(getApplication(),bookId, ReviewRepository.getInstance());
-
         viewModel.getReviewsByIdBook().observe(this, reviewEntities -> {
             if(reviewEntities!= null){
                 reviews = reviewEntities;
@@ -113,11 +114,13 @@ public class ShowAllReviews extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //Button displaying little navigation menu
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.activity_default_menu, menu);
         return true;
     }
 
+    //choose to go to settings or another page
     public boolean onOptionsItemSelected(MenuItem item){
         Intent intent;
         switch(item.getItemId()) {

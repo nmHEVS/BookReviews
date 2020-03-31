@@ -49,10 +49,12 @@ public class AddBook extends AppCompatActivity {
         else
             setTheme(R.style.LightTheme);
 
+        //display the activity with the toolbar
         setContentView(R.layout.activity_add_book);
         Toolbar toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
+        //creating text view to display data
         etTitle = findViewById(R.id.title_editText);
         etAuthor = findViewById(R.id.author_editText);
         etCategory = findViewById(R.id.category_editText);
@@ -60,24 +62,31 @@ public class AddBook extends AppCompatActivity {
         etYearPublished = findViewById(R.id.yearPublished_editText);
         etPlotSummary = findViewById(R.id.plotSummary_editText);
 
+        //creating the book object
         BookViewModel.Factory factory = new BookViewModel.Factory(getApplication(),0,
                 "","","","",0,
                 "");
         viewModel = ViewModelProviders.of(this, factory).get(BookViewModel.class);
     }
 
+    /** Called when click on the ADD button*/
     public void add_book(View v){
         String title = etTitle.getText().toString();
+
+        // check if the field title is not null (title is mandatory)
         if(title.matches("")){
             toast = Toast.makeText(this, "Title is mandatory", Toast.LENGTH_LONG);
             toast.show();
         }else{
+            //create the book entity
             book = new BookEntity(etTitle.getText().toString(),etAuthor.getText().toString(),
                     etCategory.getText().toString(),etEdition.getText().toString(),
                     Integer.parseInt(etYearPublished.getText().toString()),
                     etPlotSummary.getText().toString());
 
+            //create the book in the DB
             viewModel.createBook(book, new OnAsyncEventListener() {
+                //write in the LOG if the book is created or not
                 @Override
                 public void onSuccess() {
                     Log.d(TAG, "createBook: success");
@@ -93,6 +102,7 @@ public class AddBook extends AppCompatActivity {
         }
     }
 
+    /** Called when click on the CANCEL button : end the current activity and go back to the last activity*/
     public void cancel(View v){
         this.finish();
     }

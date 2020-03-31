@@ -54,7 +54,7 @@ public class ShowReview extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
-
+        //get datas of the selected review
 
         Long reviewId = getIntent().getLongExtra("reviewId", 0L);
         Long bookId = getIntent().getLongExtra("reviewId_book", 0L);
@@ -64,11 +64,13 @@ public class ShowReview extends AppCompatActivity {
         String reviewDate = getIntent().getStringExtra("reviewDate");
         String reviewText = getIntent().getStringExtra("reviewReview");
 
+        //create the review entity
         review = new ReviewEntity(bookId,reviewGrade,reviewAuthor,reviewDate,reviewText);
         review.setId(reviewId);
 
         initiateView();
 
+        //create the review to display
         ReviewViewModel.Factory factory = new ReviewViewModel.Factory(getApplication(), reviewId,
                 bookId,reviewAuthor,reviewDate,reviewGrade,reviewText);
         viewModel = ViewModelProviders.of(this, factory).get(ReviewViewModel.class);
@@ -80,6 +82,7 @@ public class ShowReview extends AppCompatActivity {
         });
     }
 
+    //initialize the view of the review with the datas we have at first
     private void initiateView(){
         isEditable = false;
         etTitle = findViewById(R.id.book);
@@ -100,8 +103,7 @@ public class ShowReview extends AppCompatActivity {
         etReview.setFocusable(false);
     }
 
-
-
+    //Display a little message if the review has been updated or not
     private void setResponse(Boolean response) {
         if (response) {
             statusToast = Toast.makeText(this, "Update for the book OK", Toast.LENGTH_LONG);
@@ -113,7 +115,7 @@ public class ShowReview extends AppCompatActivity {
     }
 
 
-
+    //switch the fields in editable mode to modify them
     private void switchEditableMode(){
         if(!isEditable){
 
@@ -135,6 +137,7 @@ public class ShowReview extends AppCompatActivity {
 
 
         }else{
+            //if the fields are in editable mode, put them back into view mode and save the changes in DB
             saveChanges(
                     etAuthor.getText().toString(),
                     Double.parseDouble(etGrade.getText().toString()),
@@ -158,6 +161,7 @@ public class ShowReview extends AppCompatActivity {
         isEditable = !isEditable;
     }
 
+    //save the modified datas in the DB
     private void saveChanges(String author, double grade, String date, String reviewText){
         review.setAuthor(author);
         review.setGrade(grade);
@@ -165,6 +169,7 @@ public class ShowReview extends AppCompatActivity {
         review.setReview(reviewText);
 
         viewModel.updateReview(review, new OnAsyncEventListener() {
+            //write in the LOG if the review has been updated or not
             @Override
             public void onSuccess() {
                 Log.d(TAG, "updateBook: success");

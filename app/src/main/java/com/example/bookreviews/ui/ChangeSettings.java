@@ -35,13 +35,13 @@ public class ChangeSettings extends AppCompatActivity {
         startActivity(new Intent(ChangeSettings.this, ChangeSettings.this.getClass()));
     }
 
-    /** Called when click on Apply settings : */
+    /** Called when click on Apply settings : apply the mode chosen (light/dark)*/
     public void applyMode(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    /** Called when click on information*/
+    /** Called when click on information : display the about page*/
     public void displayAbout(View view) {
         Intent intent = new Intent(this, About.class);
         startActivity(intent);

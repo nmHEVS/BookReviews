@@ -46,6 +46,7 @@ public class ShowAllBooks extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
+        //create and set the layout for the recycler view to display the datas
         RecyclerView recyclerView = findViewById(R.id.booksRecyclerView);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -55,6 +56,7 @@ public class ShowAllBooks extends AppCompatActivity {
                 LinearLayoutManager.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
+        //create the onClick objets that display the datas
         books = new ArrayList<>();
         adapter = new RecyclerAdapter<>(new RecyclerViewItemClickListener() {
             @Override
@@ -84,7 +86,7 @@ public class ShowAllBooks extends AppCompatActivity {
             }
         });
 
-
+        //Create the list of books to display the titles
         BookListViewModel.Factory factory = new BookListViewModel.Factory(getApplication());
         viewModel = ViewModelProviders.of(this, factory).get(BookListViewModel.class);
         viewModel.getBooks().observe(this, bookEntities -> {
@@ -104,11 +106,13 @@ public class ShowAllBooks extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //Button displaying little navigation menu
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.activity_all_books_menu, menu);
         return true;
     }
 
+    //choose to go to settings or another page
     public boolean onOptionsItemSelected(MenuItem item){
         Intent intent;
         switch(item.getItemId()) {

@@ -29,15 +29,15 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         AppDatabase.getInstance(getBaseContext());
-
-
     }
 
+    //Button displaying little navigation menu
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
+    //button to open the settings
     public boolean onOptionsItemSelected(MenuItem item){
         switch(item.getItemId()) {
             case R.id.action_settings:
@@ -55,11 +55,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /** Called when click on Search a Book*/
-    public void searchBook(View view) {
-        Intent intent = new Intent(this, SearchBook.class);
-        startActivity(intent);
-    }
+
 
     /** Called when click on Search a Book*/
     public void addBook(View view) {
