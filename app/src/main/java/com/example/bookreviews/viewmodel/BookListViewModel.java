@@ -41,6 +41,23 @@ public class BookListViewModel extends AndroidViewModel {
         observableBooks.addSource(books, observableBooks::setValue);
     }
 
+    public BookListViewModel(@NonNull Application application, BookRepository bookRepository, String author){
+        super(application);
+
+        repository = bookRepository;
+
+        applicationContext = application.getApplicationContext();
+
+        observableBooks = new MediatorLiveData<>();
+        // set by default null, until we get data from the database.
+        observableBooks.setValue(null);
+
+        LiveData<List<BookEntity>> books = repository.getAllBooksByAuthor(author, applicationContext);
+
+        //observe the changes of the entities from the database and forward them
+        observableBooks.addSource(books, observableBooks::setValue);
+    }
+
     public static class Factory extends ViewModelProvider.NewInstanceFactory{
 
         @NonNull

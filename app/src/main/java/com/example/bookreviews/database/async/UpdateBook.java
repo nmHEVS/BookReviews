@@ -1,20 +1,22 @@
 package com.example.bookreviews.database.async;
 
 import android.app.Application;
+import android.content.Context;
 import android.os.AsyncTask;
 
+import com.example.bookreviews.database.AppDatabase;
 import com.example.bookreviews.database.entity.BookEntity;
 import com.example.bookreviews.util.OnAsyncEventListener;
 import com.example.bookreviews.viewmodel.BaseApp;
 
 public class UpdateBook extends AsyncTask<BookEntity, Void, Void> {
 
-    private Application application;
+    private AppDatabase database;
     private OnAsyncEventListener callback;
     private Exception exception;
 
-    public UpdateBook(Application application, OnAsyncEventListener callback) {
-        this.application = application;
+    public UpdateBook(Context context, OnAsyncEventListener callback) {
+        database = AppDatabase.getInstance(context);
         this.callback = callback;
     }
 
@@ -23,7 +25,7 @@ public class UpdateBook extends AsyncTask<BookEntity, Void, Void> {
     protected Void doInBackground(BookEntity... params) {
         try {
             for (BookEntity book : params)
-                ((BaseApp) application).getDatabase().bookDao()
+                database.bookDao()
                         .update(book);
         } catch (Exception e) {
             this.exception = e;

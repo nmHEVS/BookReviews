@@ -39,6 +39,14 @@ public class BookRepository {
         return AppDatabase.getInstance(context).bookDao().getAllBooks();
     }
 
+    public LiveData<List<BookEntity>> getAllBooksByAuthor(final String author, Context context){
+        return AppDatabase.getInstance(context).bookDao().getBooksByAuthor(author);
+    }
+
+    public LiveData<List<BookEntity>> getAllBooksByTitle(final String title, Context context){
+        return AppDatabase.getInstance(context).bookDao().getBooksByTitle(title);
+    }
+
 
     public void insert(final BookEntity book, OnAsyncEventListener callback, Application application){
         new CreateBook(application, callback).execute(book);
