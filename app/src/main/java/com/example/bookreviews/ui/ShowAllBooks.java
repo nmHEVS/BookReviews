@@ -29,7 +29,6 @@ public class ShowAllBooks extends AppCompatActivity {
     private static final String TAG = "BooksActivity";
 
     private List<BookEntity> books;
-    private BookRepository book_repository;
     private RecyclerAdapter<BookEntity> adapter;
     private BookListViewModel viewModel;
 
@@ -43,7 +42,7 @@ public class ShowAllBooks extends AppCompatActivity {
         else
             setTheme(R.style.LightTheme);
 
-
+        setContentView(R.layout.activity_display_all_books);
 
         RecyclerView recyclerView = findViewById(R.id.booksRecyclerView);
 
@@ -68,12 +67,8 @@ public class ShowAllBooks extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        setContentView(R.layout.activity_display_all_books);
         Toolbar toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
-
-
 
         BookListViewModel.Factory factory = new BookListViewModel.Factory(getApplication());
         viewModel = ViewModelProviders.of(this, factory).get(BookListViewModel.class);
