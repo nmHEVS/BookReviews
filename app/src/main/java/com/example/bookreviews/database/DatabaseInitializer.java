@@ -36,7 +36,7 @@ public class DatabaseInitializer {
         //poopulate books
         addBook(db, "Fahrenheit 451", "Ray Bradbury", "Ballantine Books",
                 "Dystopian", 1953,
-                "Fahrenheit 451 is set in an unspecified city (likely in the American" +
+                "Fahrenheit 451 is set in an unspecified city \n (likely in the American" +
                         " Midwest) in the year 1999 (according to Ray Bradbury's Coda), though it "+
                         "is written as if set in a distant future. The earliest editions " +
                         "make clear that it takes place no earlier than the year 1960.\n" +

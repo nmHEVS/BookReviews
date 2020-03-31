@@ -76,6 +76,20 @@ public abstract class AppDatabase extends RoomDatabase {
 
     }
 
+
+    public static void initializeDemoData(final AppDatabase database) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            database.runInTransaction(() -> {
+                Log.i(TAG, "Wipe database.");
+                database.bookDao().deleteAll();
+                database.reviewDao().deleteAll();
+
+                DatabaseInitializer.populateDatabase(database);
+            });
+        });
+    }
+
+
     private void updateDatabaseCreated(final Context context){
         if(context.getDatabasePath(DATABASE_NAME).exists()){
             Log.i(TAG, "Database initialized.");

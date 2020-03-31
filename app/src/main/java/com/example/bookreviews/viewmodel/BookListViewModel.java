@@ -45,11 +45,11 @@ public class BookListViewModel extends AndroidViewModel {
 
         @NonNull
         private final Application application;
-
         private final BookRepository bookRepository;
 
         public Factory(@NonNull Application application){
             this.application = application;
+
             bookRepository = BookRepository.getInstance();
         }
 

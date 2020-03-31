@@ -53,7 +53,7 @@ public class ShowBook extends AppCompatActivity {
 
         Long bookId = getIntent().getLongExtra("bookId", 0L);
         String bookTitle = getIntent().getStringExtra("bookTitle");
-        String bookAuthor = getIntent().getStringExtra("bookTitle");
+        String bookAuthor = getIntent().getStringExtra("bookAuthor");
         String bookCategory = getIntent().getStringExtra("bookCategory");
         String bookEdition = getIntent().getStringExtra("bookEdition");
         String bookPlotSummary = getIntent().getStringExtra("bookPlotSummary");

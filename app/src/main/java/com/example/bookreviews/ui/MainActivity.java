@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         AppDatabase.getInstance(getBaseContext());
+
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
