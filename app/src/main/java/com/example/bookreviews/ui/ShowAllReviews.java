@@ -24,6 +24,7 @@ import com.example.bookreviews.R;
 import com.example.bookreviews.adapter.RecyclerAdapter;
 import com.example.bookreviews.database.entity.BookEntity;
 import com.example.bookreviews.database.entity.ReviewEntity;
+import com.example.bookreviews.database.repository.ReviewRepository;
 import com.example.bookreviews.util.RecyclerViewItemClickListener;
 import com.example.bookreviews.viewmodel.BookListViewModel;
 import com.example.bookreviews.viewmodel.ReviewListViewModel;
@@ -54,6 +55,7 @@ public class ShowAllReviews extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Long bookId = getIntent().getLongExtra("bookId", 0L);
+        String bookTitle = getIntent().getStringExtra("bookTitle");
 
         RecyclerView recyclerView = findViewById(R.id.reviewsRecyclerView);
 
@@ -73,7 +75,9 @@ public class ShowAllReviews extends AppCompatActivity {
                 intent.putExtra("reviewId_book", reviews.get(position).getId_book());
                 intent.putExtra("reviewAuthor", reviews.get(position).getAuthor());
                 intent.putExtra("reviewGrade", reviews.get(position).getGrade());
+                intent.putExtra("reviewDate", reviews.get(position).getDate());
                 intent.putExtra("reviewReview", reviews.get(position).getReview());
+                intent.putExtra("reviewBookTitle", bookTitle);
                 startActivity(intent);
             }
 
@@ -90,15 +94,14 @@ public class ShowAllReviews extends AppCompatActivity {
         });
 
 
-        ReviewListViewModel.Factory factory = new ReviewListViewModel.Factory(getApplication());
-        viewModel = ViewModelProviders.of(this, factory).get(ReviewListViewModel.class);
+        viewModel = new ReviewListViewModel(getApplication(),bookId, ReviewRepository.getInstance());
+
         viewModel.getReviewsByIdBook().observe(this, reviewEntities -> {
             if(reviewEntities!= null){
                 reviews = reviewEntities;
                 adapter.setData(reviews);
             }
         });
-
         recyclerView.setAdapter(adapter);
 
     }

@@ -38,6 +38,8 @@ public class ShowReview extends AppCompatActivity {
     private EditText etGrade;
     private EditText etReview;
 
+    private String bookTitle = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +57,8 @@ public class ShowReview extends AppCompatActivity {
 
 
         Long reviewId = getIntent().getLongExtra("reviewId", 0L);
-        Long bookId = getIntent().getLongExtra("bookTitle", 0L);
+        Long bookId = getIntent().getLongExtra("reviewId_book", 0L);
+        bookTitle = getIntent().getStringExtra("reviewBookTitle");
         String reviewAuthor = getIntent().getStringExtra("reviewAuthor");
         double reviewGrade = getIntent().getDoubleExtra("reviewGrade", 0);
         String reviewDate = getIntent().getStringExtra("reviewDate");
@@ -79,15 +82,15 @@ public class ShowReview extends AppCompatActivity {
 
     private void initiateView(){
         isEditable = false;
-        etTitle = findViewById(R.id.title);
-        etTitle.setText(review.getId_book().toString());
+        etTitle = findViewById(R.id.book);
+        etTitle.setText(bookTitle);
         etAuthor = findViewById(R.id.author);
         etAuthor.setText(review.getAuthor());
         etGrade = findViewById(R.id.grade);
         etGrade.setText(String.valueOf(review.getGrade()));
         etDate = findViewById(R.id.date);
         etDate.setText(review.getDate());
-        etReview = findViewById(R.id.plotSummary);
+        etReview = findViewById(R.id.reviewText);
         etReview.setText(review.getReview());
 
         etTitle.setFocusable(false);
@@ -113,7 +116,6 @@ public class ShowReview extends AppCompatActivity {
 
     private void switchEditableMode(){
         if(!isEditable){
-
 
             etAuthor.setFocusable(true);
             etAuthor.setEnabled(true);
