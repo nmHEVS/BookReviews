@@ -182,7 +182,7 @@
         android:textColor="?attr/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearPublished_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/summary_textView" />
 
     //butttons ---------------------------------------------------------------------
 
