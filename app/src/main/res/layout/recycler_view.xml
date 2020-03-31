@@ -6,4 +6,5 @@
     android:layout_height="wrap_content"
     android:text="TextView"
     android:textColor="?attr/textColor"
+    android:backgroundTint="?attr/metaTextColor"
     android:textSize="25sp"></TextView>

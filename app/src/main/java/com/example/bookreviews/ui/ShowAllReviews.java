@@ -15,10 +15,31 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookreviews.R;
+import com.example.bookreviews.adapter.RecyclerAdapter;
+import com.example.bookreviews.database.entity.BookEntity;
+import com.example.bookreviews.database.entity.ReviewEntity;
+import com.example.bookreviews.util.RecyclerViewItemClickListener;
+import com.example.bookreviews.viewmodel.BookListViewModel;
+import com.example.bookreviews.viewmodel.ReviewListViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShowAllReviews extends AppCompatActivity {
+
+    private static final String TAG = "ReviewsActivity";
+
+    private List<ReviewEntity> reviews;
+    private RecyclerAdapter<ReviewEntity> adapter;
+    private ReviewListViewModel viewModel;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,43 +53,53 @@ public class ShowAllReviews extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
-        final String[] reviews = getResources().getStringArray(R.array.allreviews_array);
-        ListView list;
+        Long bookId = getIntent().getLongExtra("bookId", 0L);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.listview_reviews_layout, reviews){
-            //Call for every entry in the ArrayAdapter
+        RecyclerView recyclerView = findViewById(R.id.reviewsRecyclerView);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                LinearLayoutManager.VERTICAL);
+        recyclerView.addItemDecoration(dividerItemDecoration);
+
+        reviews = new ArrayList<>();
+        adapter = new RecyclerAdapter<>(new RecyclerViewItemClickListener() {
             @Override
-            public View getView(int position, View convertView, ViewGroup parent){
-                View view;
-                //If view doesn't exist create a new view
-                if(convertView==null){
-                    //Create the Layout
-                    LayoutInflater inflater = getLayoutInflater();
-                    view = inflater.inflate(R.layout.listview_reviews_layout, parent, false);
-                } else{
-                    view = convertView;
-                }
-
-                //Add Text to the layout
-                TextView textView1 = (TextView) view.findViewById(R.id.allreviews_array);
-                textView1.setText(reviews[position]);
-
-                return view;
+            public void onItemClick(View v, int position){
+                Intent intent = new Intent(ShowAllReviews.this, ShowReview.class);
+                intent.putExtra("reviewId", reviews.get(position).getId());
+                intent.putExtra("reviewId_book", reviews.get(position).getId_book());
+                intent.putExtra("reviewAuthor", reviews.get(position).getAuthor());
+                intent.putExtra("reviewGrade", reviews.get(position).getGrade());
+                intent.putExtra("reviewReview", reviews.get(position).getReview());
+                startActivity(intent);
             }
-        };
-
-        //ListView
-        list = (ListView) findViewById(R.id.allreviews_array);
-        list.setAdapter(adapter);
-
-        //ListView handler
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                displayReview(view);
+            public void onItemLongClick(View v, int position){
+                Intent intent = new Intent(ShowAllReviews.this, ShowReview.class);
+                intent.putExtra("reviewId", reviews.get(position).getId());
+                intent.putExtra("reviewId_book", reviews.get(position).getId_book());
+                intent.putExtra("reviewAuthor", reviews.get(position).getAuthor());
+                intent.putExtra("reviewGrade", reviews.get(position).getGrade());
+                intent.putExtra("reviewReview", reviews.get(position).getReview());
+                startActivity(intent);
             }
         });
+
+
+        ReviewListViewModel.Factory factory = new ReviewListViewModel.Factory(getApplication());
+        viewModel = ViewModelProviders.of(this, factory).get(ReviewListViewModel.class);
+        viewModel.getReviewsByIdBook().observe(this, reviewEntities -> {
+            if(reviewEntities!= null){
+                reviews = reviewEntities;
+                adapter.setData(reviews);
+            }
+        });
+
+        recyclerView.setAdapter(adapter);
 
     }
 

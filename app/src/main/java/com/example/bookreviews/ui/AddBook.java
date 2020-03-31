@@ -52,7 +52,6 @@ public class AddBook extends AppCompatActivity {
         setContentView(R.layout.activity_add_book);
         Toolbar toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
-        //cancel
 
         etTitle = findViewById(R.id.title_editText);
         etAuthor = findViewById(R.id.author_editText);
@@ -92,5 +91,9 @@ public class AddBook extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    public void cancel(View v){
+        this.finish();
     }
 }

@@ -80,7 +80,7 @@
 
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/book_editText"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
@@ -96,7 +96,7 @@
         app:layout_constraintTop_toBottomOf="@+id/app_bar" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/author_editText"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
@@ -110,10 +110,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/reviewer_textView"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/book_editText" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/grade_editText"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
@@ -125,11 +125,11 @@
         android:textColor="?attr/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/grade_textView"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/author_editText" />
 
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/date_editText"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
@@ -142,10 +142,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/grade_textView"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/grade_editText" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/reviewText_editText"
         android:layout_width="0dp"
         android:layout_height="260dp"
         android:layout_marginStart="16dp"
@@ -172,11 +172,11 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:backgroundTint="#2196F3"
-        android:onClick="addReview"
+        android:onClick="add_review"
         android:text="@string/add"
         app:layout_constraintEnd_toStartOf="@+id/cancel"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
+        app:layout_constraintTop_toBottomOf="@+id/reviewText_editText" />
 
     <Button
         android:id="@+id/cancel"
@@ -190,7 +190,7 @@
         android:text="@string/cancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/add_review"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
+        app:layout_constraintTop_toBottomOf="@+id/reviewText_editText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

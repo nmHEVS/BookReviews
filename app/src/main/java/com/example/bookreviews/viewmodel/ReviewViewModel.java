@@ -10,7 +10,9 @@ import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.bookreviews.database.entity.BookEntity;
 import com.example.bookreviews.database.entity.ReviewEntity;
+import com.example.bookreviews.database.repository.BookRepository;
 import com.example.bookreviews.database.repository.ReviewRepository;
 import com.example.bookreviews.util.OnAsyncEventListener;
 
@@ -20,13 +22,15 @@ public class ReviewViewModel extends AndroidViewModel {
 
     private Application application;
 
-    //
     private final MediatorLiveData<ReviewEntity> observableReview;
 
+
     public ReviewViewModel(@NonNull Application application, final long id, final long id_book, final String author,
-                         final String date, final double grade, String review_text , ReviewRepository reviewRepository){
+                         final String date, final double grade, String review_text, ReviewRepository reviewRepository){
 
         super(application);
+
+
 
         repository = reviewRepository;
 
@@ -57,7 +61,7 @@ public class ReviewViewModel extends AndroidViewModel {
 
         public Factory(@NonNull Application application, long reviewId, final long reviewId_book,
                        final String reviewAuthor, final String reviewDate, final double reviewGrade,
-                       final String reviewReview_text, ReviewRepository repository){
+                       final String reviewReview_text){
 
             this.application = application;
             this.id = reviewId;
@@ -66,7 +70,7 @@ public class ReviewViewModel extends AndroidViewModel {
             this.date = reviewDate;
             this.grade = reviewGrade;
             this.review_text = reviewReview_text;
-            this.repository = repository;
+            repository = ReviewRepository.getInstance();
         }
 
         @Override public <T extends ViewModel> T create(Class<T> modelClass){
@@ -74,15 +78,19 @@ public class ReviewViewModel extends AndroidViewModel {
         }
     }
 
+    public LiveData<ReviewEntity> getReview(){
+        return observableReview;
+    }
+
     public void createReview(ReviewEntity review, OnAsyncEventListener callBack){
         repository.insert(review, callBack, application);
     }
 
-    public void updateBook(ReviewEntity review, OnAsyncEventListener callBack){
+    public void updateReview(ReviewEntity review, OnAsyncEventListener callBack){
         repository.update(review, callBack, application);
     }
 
-    public void deleteBook(ReviewEntity review, OnAsyncEventListener callBack){
+    public void deleteReview(ReviewEntity review, OnAsyncEventListener callBack){
         repository.delete(review, callBack, application);
     }
 

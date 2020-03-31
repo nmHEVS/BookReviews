@@ -72,8 +72,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/booksRecyclerView"
-        android:layout_width="378dp"
-        android:layout_height="670dp"
+        android:layout_width="0dp"
+        android:layout_height="480dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:scrollbars="vertical"

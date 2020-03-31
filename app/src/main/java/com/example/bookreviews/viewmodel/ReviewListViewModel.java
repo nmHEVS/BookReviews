@@ -63,7 +63,9 @@ public class ReviewListViewModel extends AndroidViewModel {
     }
 
     //Expose the LiveData ClientEntities query so the UI can observe it.
-    public LiveData<List<ReviewEntity>> getBooks(){
+
+    public LiveData<List<ReviewEntity>> getReviewsByIdBook(){
         return observableReviews;
     }
+
 }

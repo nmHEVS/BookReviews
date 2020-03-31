@@ -16,12 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
 
-    // text views
-    ----------------------------------------------------------------------------------------
-
-    //butttons
-    --------------------------------------------------------------------------------------------------------
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -38,7 +32,9 @@
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="24sp"
                 android:textColor="?attr/textColor"
+                android:backgroundTint="?attr/metaTextColor"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,6 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="?attr/textColor"
+                android:backgroundTint="?attr/metaTextColor"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,6 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="?attr/textColor"
+                android:backgroundTint="?attr/metaTextColor"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,6 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="?attr/textColor"
+                android:backgroundTint="?attr/metaTextColor"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,6 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="?attr/textColor"
+                android:backgroundTint="?attr/metaTextColor"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -100,7 +100,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="240dp"
                 android:layout_marginTop="16dp"
-                android:foregroundTint="?attr/metaTextColor"
+                android:backgroundTint="?attr/metaTextColor"
                 android:textColor="?attr/textColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -112,7 +112,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine"
-                    android:textColor="?attr/textColor" />
+                    android:textColor="?attr/textColor"
+                    android:backgroundTint="?attr/metaTextColor"
+                    />
 
             </TableRow>
 

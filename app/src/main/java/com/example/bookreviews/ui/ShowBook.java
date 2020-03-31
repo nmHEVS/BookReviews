@@ -214,6 +214,7 @@ public class ShowBook extends AppCompatActivity {
     /** Called when click on display Reviews*/
     public void displayAllReviews(View view) {
         Intent intent = new Intent(this, ShowAllReviews.class);
+        intent.putExtra("bookId", book.getId());
         startActivity(intent);
     }
 
@@ -243,6 +244,7 @@ public class ShowBook extends AppCompatActivity {
     /** Called when click on display Reviews*/
     public void addReview(View view) {
         Intent intent = new Intent(this, AddReview.class);
+        intent.putExtra("bookTitle", book.getTitle());
         startActivity(intent);
     }
 
