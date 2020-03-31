@@ -246,6 +246,7 @@ public class ShowBook extends AppCompatActivity {
     public void addReview(View view) {
         Intent intent = new Intent(this, AddReview.class);
         intent.putExtra("bookTitle", book.getTitle());
+        intent.putExtra("bookId", book.getId());
         startActivity(intent);
     }
 

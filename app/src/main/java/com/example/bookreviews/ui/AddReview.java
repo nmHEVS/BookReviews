@@ -41,6 +41,8 @@ public class AddReview extends AppCompatActivity {
 
     private Toast toast;
 
+    private String bookTitle = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,18 +57,20 @@ public class AddReview extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
-
+        bookTitle = getIntent().getStringExtra("bookTitle");
 
         etBook = findViewById(R.id.book_editText);
+        etBook.setText(bookTitle);
+        etBook.setFocusable(false);
+        etBook.setEnabled(false);
         etAuthor = findViewById(R.id.author_editText);
         etGrade = findViewById(R.id.grade_editText);
         etDate = findViewById(R.id.date_editText);
         etReview = findViewById(R.id.reviewText_editText);
 
         ReviewViewModel.Factory factory = new ReviewViewModel.Factory(getApplication(),0,
-                0,"","",0,"");
-        //viewModel = ViewModelProviders.of(this, factory).get(BookViewModel.class);
-        //cancel
+                0L,"","",0,"");
+        viewModel = ViewModelProviders.of(this, factory).get(ReviewViewModel.class);
 
 
     }
@@ -76,24 +80,30 @@ public class AddReview extends AppCompatActivity {
 
         Long bookId = getIntent().getLongExtra("bookId", 0L);
 
-        review = new ReviewEntity(bookId,Double.parseDouble(etGrade.getText().toString()),
+        String author = etAuthor.getText().toString();
+        if(author.matches("")){
+            toast = Toast.makeText(this, "Author is mandatory", Toast.LENGTH_LONG);
+            toast.show();
+        }
+        else{
+            review = new ReviewEntity(bookId,Double.parseDouble(etGrade.getText().toString()),
                     etAuthor.getText().toString(), etDate.getText().toString(),
                     etReview.getText().toString());
 
-        viewModel.createReview(review, new OnAsyncEventListener() {
-            @Override
-            public void onSuccess() {
-                Log.d(TAG, "createReview: success");
+            viewModel.createReview(review, new OnAsyncEventListener() {
+                @Override
+                public void onSuccess() {
+                    Log.d(TAG, "createReview: success");
 
-                onBackPressed();
-            }
+                    onBackPressed();
+                }
 
-            @Override
-            public void onFailure(Exception e) {
-                Log.d(TAG, "CreateClient: failure", e);
-            }
-        });
-
+                @Override
+                public void onFailure(Exception e) {
+                    Log.d(TAG, "CreateClient: failure", e);
+                }
+            });
+        }
     }
 
     public void cancel(View v){
