@@ -59,7 +59,7 @@ public class BookViewModel extends AndroidViewModel {
 
         public Factory(@NonNull Application application, long bookId, final String bookTitle, final String bookAuthor,
                        final String bookEdition, final String bookCategory, final int bookYearPublished,
-                       final String bookPlotSummary, BookRepository repository){
+                       final String bookPlotSummary){
 
             this.application = application;
             this.id = bookId;
@@ -69,7 +69,7 @@ public class BookViewModel extends AndroidViewModel {
             this.category = bookCategory;
             this.yearPublished = bookYearPublished;
             this.plotSummary = bookPlotSummary;
-            this.repository = repository;
+            repository = BookRepository.getInstance();
         }
 
         @Override public <T extends ViewModel> T create(Class<T> modelClass){

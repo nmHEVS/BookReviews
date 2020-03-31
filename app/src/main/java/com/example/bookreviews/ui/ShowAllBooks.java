@@ -43,6 +43,8 @@ public class ShowAllBooks extends AppCompatActivity {
             setTheme(R.style.LightTheme);
 
         setContentView(R.layout.activity_display_all_books);
+        Toolbar toolbar = findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
 
         RecyclerView recyclerView = findViewById(R.id.booksRecyclerView);
 
@@ -58,17 +60,30 @@ public class ShowAllBooks extends AppCompatActivity {
             @Override
             public void onItemClick(View v, int position){
                 Intent intent = new Intent(ShowAllBooks.this, ShowBook.class);
+                intent.putExtra("bookId", books.get(position).getId());
+                intent.putExtra("bookTitle", books.get(position).getTitle());
+                intent.putExtra("bookAuthor", books.get(position).getAuthor());
+                intent.putExtra("bookCategory", books.get(position).getCategory());
+                intent.putExtra("bookEdition", books.get(position).getEdition());
+                intent.putExtra("bookPlotSummary", books.get(position).getPlotSummary());
+                intent.putExtra("bookYearPublished", books.get(position).getYearPublished());
                 startActivity(intent);
             }
 
             @Override
             public void onItemLongClick(View v, int position){
                 Intent intent = new Intent(ShowAllBooks.this, ShowBook.class);
+                intent.putExtra("bookId", books.get(position).getId());
+                intent.putExtra("bookTitle", books.get(position).getTitle());
+                intent.putExtra("bookAuthor", books.get(position).getAuthor());
+                intent.putExtra("bookCategory", books.get(position).getCategory());
+                intent.putExtra("bookEdition", books.get(position).getEdition());
+                intent.putExtra("bookPlotSummary", books.get(position).getPlotSummary());
+                intent.putExtra("bookYearPublished", books.get(position).getYearPublished());
                 startActivity(intent);
             }
         });
-        Toolbar toolbar = findViewById(R.id.app_bar);
-        setSupportActionBar(toolbar);
+
 
         BookListViewModel.Factory factory = new BookListViewModel.Factory(getApplication());
         viewModel = ViewModelProviders.of(this, factory).get(BookListViewModel.class);
@@ -80,44 +95,6 @@ public class ShowAllBooks extends AppCompatActivity {
         });
 
         recyclerView.setAdapter(adapter);
-
-/*
-        ArrayAdapter<String>adapter = new ArrayAdapter<String>(this, R.layout.listview_books_layout, books){
-            //Call for every entry in the ArrayAdapter
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent){
-                View view;
-                //If view doesn't exist create a new view
-                if(convertView==null){
-                    //Create the Layout
-                    LayoutInflater inflater = getLayoutInflater();
-                    view = inflater.inflate(R.layout.listview_books_layout, parent, false);
-                } else{
-                    view = convertView;
-                }
-
-                //Add Text to the layout
-                TextView textView1 = (TextView) view.findViewById(R.id.allbooks_array);
-                textView1.setText(books[position]);
-
-                return view;
-            }
-        };
-*/
-        //ListView
-        /*list = (ListView) findViewById(R.id.allbooks_array);
-        list.setAdapter(adapter);
-
-        ListView handler
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                displayBook(view);
-            }
-        });*/
-        //Show list of all books
-
 
     }
 

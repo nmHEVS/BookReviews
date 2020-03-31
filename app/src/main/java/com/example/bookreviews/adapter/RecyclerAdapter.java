@@ -22,15 +22,16 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
     private List<T> mData;
     private RecyclerViewItemClickListener mListener;
 
-    public RecyclerAdapter(RecyclerViewItemClickListener recyclerViewItemClickListener) {
-    }
-
     static class ViewHolder extends RecyclerView.ViewHolder{
         TextView mTextView;
         ViewHolder(TextView textView){
             super(textView);
             mTextView = textView;
         }
+    }
+
+    public RecyclerAdapter(RecyclerViewItemClickListener listener){
+        mListener = listener;
     }
 
     @Override
