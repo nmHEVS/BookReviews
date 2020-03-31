@@ -168,14 +168,14 @@ public class ShowBook extends AppCompatActivity {
         viewModel.updateBook(book, new OnAsyncEventListener() {
             @Override
             public void onSuccess() {
-                Log.d(TAG, "updateClient: success");
+                Log.d(TAG, "updateBook: success");
                 setResponse(true);
                 onBackPressed();
             }
 
             @Override
             public void onFailure(Exception e) {
-                Log.d(TAG, "updateClient: failure", e);
+                Log.d(TAG, "updateBook: failure", e);
                 setResponse(false);
             }
         });
@@ -218,8 +218,26 @@ public class ShowBook extends AppCompatActivity {
     }
 
     /** Called when click on update book*/
-    public void updateBook() {
+    public void updateBook(View v) {
         switchEditableMode();
+    }
+
+    /** Called when click on delete book **/
+    public void deleteBook(View v){
+        viewModel.deleteBook(book, new OnAsyncEventListener() {
+            @Override
+            public void onSuccess() {
+                Log.d(TAG, "deleteBook: success");
+                setResponse(true);
+                onBackPressed();
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                Log.d(TAG, "delteBook: failure", e);
+                setResponse(false);
+            }
+        });
     }
 
     /** Called when click on display Reviews*/
