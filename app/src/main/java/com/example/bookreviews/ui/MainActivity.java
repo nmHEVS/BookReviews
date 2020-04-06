@@ -62,4 +62,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddBook.class);
         startActivity(intent);
     }
+
+    /** Called when click on Search a Book*/
+    public void searchBook(View view) {
+        Intent intent = new Intent(this, SearchBook.class);
+        startActivity(intent);
+    }
 }
