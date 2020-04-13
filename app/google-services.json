@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1031836740878",
+    "firebase_url": "https://bookreviewsarteromicheloud.firebaseio.com",
+    "project_id": "bookreviewsarteromicheloud",
+    "storage_bucket": "bookreviewsarteromicheloud.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031836740878:android:d764f2dac2a7d42a253b5f",
+        "android_client_info": {
+          "package_name": "com.example.bookreviews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031836740878-li6qcuj234p8li5it6oifguv076hsa0b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bookreviews",
+            "certificate_hash": "2538c7dc450822948c6971864522b212bbfc0adc"
+          }
+        },
+        {
+          "client_id": "1031836740878-2ec50oc6ond4lctkrbbt9cv6oet1j3id.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC68Y_ZE4VnslsxK-_Wmt2G2_oxKRz1iRk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031836740878-2ec50oc6ond4lctkrbbt9cv6oet1j3id.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
