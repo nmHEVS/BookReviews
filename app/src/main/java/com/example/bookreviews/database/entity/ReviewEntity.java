@@ -7,6 +7,12 @@ import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import java.util.HashMap;
+import java.util.Map;
+
+
+//Todo put exclude if needed
+
 @Entity(tableName = "reviews",
         foreignKeys =
         @ForeignKey(
@@ -16,31 +22,20 @@ import androidx.room.PrimaryKey;
                 onDelete = ForeignKey.CASCADE
         ),
         indices = {
-        @Index(
-                value = {"id_book"}
-        )}
+                @Index(
+                        value = {"id_book"}
+                )}
 )
 public class ReviewEntity {
 
-    @PrimaryKey(autoGenerate = true)
-    private Long id;
-
-    @ColumnInfo(name = "id_book")
-    private Long id_book;
-
-    @ColumnInfo(name = "grade")
+    private String id;
+    private String id_book;
     private double grade;
-
-    @ColumnInfo(name = "author")
     private String author;
-
-    @ColumnInfo(name = "date")
     private String date;
-
-    @ColumnInfo(name = "review")
     private String review;
 
-    public ReviewEntity(@NonNull long id_book, double grade, String author, String date, String review){
+    public ReviewEntity(@NonNull String id_book, double grade, String author, String date, String review){
         this.id_book = id_book;
         this.grade = grade;
         this.author = author;
@@ -48,11 +43,11 @@ public class ReviewEntity {
         this.review = review;
     }
 
-    public Long getId_book() {
+    public String getId_book() {
         return id_book;
     }
 
-    public void setId_book(Long id_book) {
+    public void setId_book(String id_book) {
         this.id_book = id_book;
     }
 
@@ -88,11 +83,11 @@ public class ReviewEntity {
         this.review = review;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -103,5 +98,16 @@ public class ReviewEntity {
         if(!(obj instanceof  ReviewEntity)) return false;
         ReviewEntity o = (ReviewEntity) obj;
         return o.getAuthor().equals(this.getAuthor());
+    }
+
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("id_book", id_book);
+        result.put("grade", grade);
+        result.put("author", author);
+        result.put("date", date);
+        result.put("review", review);
+
+        return result;
     }
 }

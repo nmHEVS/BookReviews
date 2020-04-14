@@ -6,31 +6,22 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "books")
+import java.util.HashMap;
+import java.util.Map;
+
+//Todo put Exclude if needed
+
 public class BookEntity {
 
-    @PrimaryKey(autoGenerate = true)
-    private Long id;
-
-    @ColumnInfo(name = "title")
+    private String id;
     private String title;
-
-    @ColumnInfo(name = "author")
     private String author;
-
-    @ColumnInfo(name = "edition")
     private String edition;
-
-    @ColumnInfo(name = "category")
     private String category;
-
-    @ColumnInfo(name = "yearPublished")
     private int yearPublished;
-
-    @ColumnInfo(name = "plotSummary")
     private String plotSummary;
 
-    public BookEntity(@NonNull String title, String author, String edition, String category, int yearPublished, String plotSummary){
+    public BookEntity(@NonNull String title, String author, String  edition, String category, int yearPublished, String plotSummary) {
         this.title = title;
         this.author = author;
         this.edition = edition;
@@ -39,8 +30,14 @@ public class BookEntity {
         this.plotSummary = plotSummary;
     }
 
-    public Long getId(){return id;}
 
+    public String getId(){
+        return id;
+    }
+
+    public void setId(String id){
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -90,17 +87,30 @@ public class BookEntity {
         this.plotSummary = plotSummary;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-
-    @Override
     public boolean equals(Object obj){
         if (obj == null) return false;
         if (obj == this) return true;
         if(!(obj instanceof  BookEntity)) return false;
         BookEntity o = (BookEntity) obj;
         return o.getAuthor().equals(this.getAuthor());
+    }
+
+    @Override
+    public String toString() {
+        return title;
+    }
+
+
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("title", title);
+        result.put("author", author);
+        result.put("edition", edition);
+        result.put("category", category);
+        result.put("yearPublished", yearPublished);
+        result.put("plotSummary", plotSummary);
+
+        return result;
     }
 }
