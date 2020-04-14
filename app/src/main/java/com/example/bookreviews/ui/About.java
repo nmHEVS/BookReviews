@@ -23,4 +23,5 @@ public class About extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
     }
+    //display infos
 }
