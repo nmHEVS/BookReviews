@@ -35,6 +35,8 @@ public class ReviewEntity {
     private String date;
     private String review;
 
+
+
     public ReviewEntity(@NonNull String id_book, double grade, String author, String date, String review){
         this.id_book = id_book;
         this.grade = grade;

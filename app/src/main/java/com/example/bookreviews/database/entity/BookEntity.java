@@ -21,6 +21,8 @@ public class BookEntity {
     private int yearPublished;
     private String plotSummary;
 
+
+
     public BookEntity(@NonNull String title, String author, String  edition, String category, int yearPublished, String plotSummary) {
         this.title = title;
         this.author = author;
