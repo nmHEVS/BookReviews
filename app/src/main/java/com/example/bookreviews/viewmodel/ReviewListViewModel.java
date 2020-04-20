@@ -27,7 +27,7 @@ public class ReviewListViewModel extends AndroidViewModel {
 
     private final MediatorLiveData<List<ReviewEntity>> observableReviews;
 
-    public ReviewListViewModel(@NonNull Application application,long id, ReviewRepository reviewRepository){
+    public ReviewListViewModel(@NonNull Application application,String id, ReviewRepository reviewRepository){
         super(application);
 
         repository = reviewRepository;
@@ -39,7 +39,7 @@ public class ReviewListViewModel extends AndroidViewModel {
         // set by default null, until we get data from the database.
         observableReviews.setValue(null);
 
-        LiveData<List<ReviewEntity>> reviews = repository.getAllReviewsForABook(id, applicationContext);
+        LiveData<List<ReviewEntity>> reviews = repository.getAllReviewsForABook(id);
 
         //observe the changes of the entities from the database and forward them
         observableReviews.addSource(reviews, observableReviews::setValue);
@@ -57,7 +57,7 @@ public class ReviewListViewModel extends AndroidViewModel {
             reviewRepository = ReviewRepository.getInstance();
         }
 
-        public <T extends ViewModel> T create(Class<T> modelClass, long id){
+        public <T extends ViewModel> T create(Class<T> modelClass, String id){
             return (T) new ReviewListViewModel(application, id, reviewRepository);
         }
     }

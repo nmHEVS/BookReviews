@@ -11,8 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.bookreviews.R;
-import com.example.bookreviews.database.AppDatabase;
-import com.example.bookreviews.database.DatabaseInitializer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
-        AppDatabase.getInstance(getBaseContext());
+
     }
 
     //Button displaying little navigation menu

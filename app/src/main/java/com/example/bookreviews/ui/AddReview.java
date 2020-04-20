@@ -15,8 +15,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.bookreviews.R;
-import com.example.bookreviews.database.dao.BookDao;
-import com.example.bookreviews.database.dao.ReviewDao;
 import com.example.bookreviews.database.entity.BookEntity;
 import com.example.bookreviews.database.entity.ReviewEntity;
 import com.example.bookreviews.util.OnAsyncEventListener;
@@ -31,7 +29,6 @@ public class AddReview extends AppCompatActivity {
     private ReviewEntity review;
     private ReviewViewModel viewModel;
 
-    private ReviewDao reviewDao;
 
     private EditText etBook;
     private EditText etAuthor;
@@ -72,8 +69,8 @@ public class AddReview extends AppCompatActivity {
         etReview = findViewById(R.id.reviewText_editText);
 
         //creating the review object
-        ReviewViewModel.Factory factory = new ReviewViewModel.Factory(getApplication(),0,
-                0L,"","",0,"");
+        ReviewViewModel.Factory factory = new ReviewViewModel.Factory(getApplication(),"",
+                "","","",0,"");
         viewModel = ViewModelProviders.of(this, factory).get(ReviewViewModel.class);
 
 
@@ -82,7 +79,7 @@ public class AddReview extends AppCompatActivity {
     /** Called when click on the ADD button*/
     public void add_review(View v){
 
-        Long bookId = getIntent().getLongExtra("bookId", 0L);
+        String bookId = getIntent().getStringExtra("bookId");
 
         String author = etAuthor.getText().toString();
 
@@ -93,7 +90,7 @@ public class AddReview extends AppCompatActivity {
         }
         else{
             //create the review entity
-            review = new ReviewEntity(bookId,Double.parseDouble(etGrade.getText().toString()),
+            review = new ReviewEntity(bookId, Double.parseDouble(etGrade.getText().toString()),
                     etAuthor.getText().toString(), etDate.getText().toString(),
                     etReview.getText().toString());
 

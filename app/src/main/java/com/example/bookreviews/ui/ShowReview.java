@@ -56,8 +56,8 @@ public class ShowReview extends AppCompatActivity {
 
         //get datas of the selected review
 
-        Long reviewId = getIntent().getLongExtra("reviewId", 0L);
-        Long bookId = getIntent().getLongExtra("reviewId_book", 0L);
+        String reviewId = getIntent().getStringExtra("reviewId");
+        String bookId = getIntent().getStringExtra("reviewId_book");
         bookTitle = getIntent().getStringExtra("reviewBookTitle");
         String reviewAuthor = getIntent().getStringExtra("reviewAuthor");
         double reviewGrade = getIntent().getDoubleExtra("reviewGrade", 0);

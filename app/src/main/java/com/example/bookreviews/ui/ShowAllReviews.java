@@ -54,7 +54,7 @@ public class ShowAllReviews extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
-        Long bookId = getIntent().getLongExtra("bookId", 0L);
+        String bookId = getIntent().getStringExtra("bookId");
         String bookTitle = getIntent().getStringExtra("bookTitle");
 
         //create and set the layout for the recycler view to display the datas

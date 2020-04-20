@@ -1,20 +1,20 @@
 package com.example.bookreviews.database.repository;
 
-import android.app.Application;
-import android.content.Context;
-
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 
-import com.example.bookreviews.database.AppDatabase;
-import com.example.bookreviews.database.async.CreateReview;
-import com.example.bookreviews.database.async.DeleteReview;
-import com.example.bookreviews.database.async.UpdateReview;
-import com.example.bookreviews.database.entity.BookEntity;
 import com.example.bookreviews.database.entity.ReviewEntity;
+import com.example.bookreviews.database.firebase.ReviewListLiveData;
+import com.example.bookreviews.database.firebase.ReviewLiveData;
 import com.example.bookreviews.util.OnAsyncEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 
 import java.util.List;
-import java.util.WeakHashMap;
 
 public class ReviewRepository {
 
@@ -33,32 +33,110 @@ public class ReviewRepository {
         return instance;
     }
 
-    public LiveData<List<String>> getAllAuthorForABook(final long id, Context context){
-        return AppDatabase.getInstance(context).reviewDao().getByIdBook(id);
-    }
-
-    public LiveData<List<ReviewEntity>> getAllReviewsForABook(final long id, Context context){
-        return AppDatabase.getInstance(context).reviewDao().getReviewsByIdBook(id);
-    }
-    public LiveData<ReviewEntity> getReview(final long id_book, final String author, Context context){
-        return AppDatabase.getInstance(context).reviewDao().getReview(id_book, author);
-    }
-
-    public LiveData<List<String>> getAvgGrade(final long id_book, Context context){
-        return AppDatabase.getInstance(context).reviewDao().getAvgGrade(id_book);
-    }
 
 
-    public void insert(final ReviewEntity review, OnAsyncEventListener callback, Application application){
-        new CreateReview(application, callback).execute(review);
+    public LiveData<List<ReviewEntity>> getAllReviewsForABook(final String book){
+        DatabaseReference reference = FirebaseDatabase.getInstance()
+                .getReference("books")
+                .child(book)
+                .child("reviews");
+        return new ReviewListLiveData(reference, book);    }
+
+    public LiveData<ReviewEntity> getReview(final String id){
+        DatabaseReference reference = FirebaseDatabase.getInstance()
+                .getReference("books")
+                .child("reviews")
+                .child(id);
+        return new ReviewLiveData(reference);
     }
 
-    public void delete(final ReviewEntity review, OnAsyncEventListener callback, Application application){
-        new DeleteReview(application, callback).execute(review);
+
+
+    public void insert(final ReviewEntity review, final OnAsyncEventListener callback) {
+        DatabaseReference reference = FirebaseDatabase.getInstance()
+                .getReference("books")
+                .child(review.getId_book())
+                .child("reviews");
+        String key = reference.push().getKey();
+        FirebaseDatabase.getInstance()
+                .getReference("books")
+                .child(review.getId_book())
+                .child("reviews")
+                .child(key)
+                .setValue(review, (databaseError, databaseReference) -> {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
     }
 
-    public void update(final ReviewEntity review, OnAsyncEventListener callback, Application application){
-        new UpdateReview(application, callback).execute(review);
+    public void delete(final ReviewEntity review, OnAsyncEventListener callback) {
+        FirebaseDatabase.getInstance()
+                .getReference("reviews")
+                .child(review.getId_book())
+                .child("reviews")
+                .child(review.getId())
+                .removeValue((databaseError, databaseReference) -> {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
     }
+
+    public void update(final ReviewEntity review, OnAsyncEventListener callback) {
+        FirebaseDatabase.getInstance()
+                .getReference("books")
+                .child(review.getId_book())
+                .child("reviews")
+                .child(review.getId())
+                .updateChildren(review.toMap(), (databaseError, databaseReference) -> {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
+    }
+
+    public void transaction(final ReviewEntity sender, final ReviewEntity recipient,
+                            OnAsyncEventListener callback) {
+        final DatabaseReference rootReference = FirebaseDatabase.getInstance().getReference();
+        rootReference.runTransaction(new Transaction.Handler() {
+            @NonNull
+            @Override
+            public Transaction.Result doTransaction(@NonNull MutableData mutableData) {
+                rootReference
+                        .child("books")
+                        .child(sender.getId_book())
+                        .child("reviews")
+                        .child(sender.getId_book())
+                        .updateChildren(sender.toMap());
+
+                rootReference
+                        .child("books")
+                        .child(recipient.getId_book())
+                        .child("reviews")
+                        .child(recipient.getId())
+                        .updateChildren(recipient.toMap());
+
+                return Transaction.success(mutableData);
+            }
+
+            @Override
+            public void onComplete(DatabaseError databaseError, boolean b,
+                                   DataSnapshot dataSnapshot) {
+                if (databaseError != null) {
+                    callback.onFailure(databaseError.toException());
+                } else {
+                    callback.onSuccess();
+                }
+            }
+        });
+    }
+
 
 }

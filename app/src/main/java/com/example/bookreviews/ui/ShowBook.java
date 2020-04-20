@@ -52,7 +52,7 @@ public class ShowBook extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //get datas of the selected book
-        Long bookId = getIntent().getLongExtra("bookId", 0L);
+        String bookId = getIntent().getStringExtra("bookId");
         String bookTitle = getIntent().getStringExtra("bookTitle");
         String bookAuthor = getIntent().getStringExtra("bookAuthor");
         String bookCategory = getIntent().getStringExtra("bookCategory");

@@ -23,7 +23,7 @@ public class BookViewModel extends AndroidViewModel {
     //
     private final MediatorLiveData<BookEntity> observableBook;
 
-    public BookViewModel(@NonNull Application application, final long id,final String title,
+    public BookViewModel(@NonNull Application application, final String id,final String title,
                          final String author, final String edition, final String category,
                          final int yearPublished, final String plotSummary ,BookRepository bookRepository){           //,
 
@@ -36,7 +36,7 @@ public class BookViewModel extends AndroidViewModel {
         observableBook = new MediatorLiveData<>();
         observableBook.setValue(null);
 
-        LiveData<BookEntity> book = repository.getBook(id, application);
+        LiveData<BookEntity> book = repository.getBook(id);
 
         observableBook.addSource(book, observableBook::setValue);
     }
@@ -47,7 +47,7 @@ public class BookViewModel extends AndroidViewModel {
         @NonNull
         private final Application application;
 
-        private final long id;
+        private final String id;
         private final String title;
         private final String author;
         private final String edition;
@@ -57,7 +57,7 @@ public class BookViewModel extends AndroidViewModel {
 
         private final BookRepository repository;
 
-        public Factory(@NonNull Application application, long bookId, final String bookTitle, final String bookAuthor,
+        public Factory(@NonNull Application application, String bookId, final String bookTitle, final String bookAuthor,
                        final String bookEdition, final String bookCategory, final int bookYearPublished,
                        final String bookPlotSummary){
 
@@ -81,15 +81,15 @@ public class BookViewModel extends AndroidViewModel {
     }
 
     public void createBook(BookEntity book, OnAsyncEventListener callBack){
-        repository.insert(book, callBack, application);
+        repository.insert(book, callBack);
     }
 
     public void updateBook(BookEntity book, OnAsyncEventListener callBack){
-        repository.update(book, callBack, application);
+        repository.update(book, callBack);
     }
 
     public void deleteBook(BookEntity book, OnAsyncEventListener callBack){
-        repository.delete(book, callBack, application);
+        repository.delete(book, callBack);
     }
 
 }

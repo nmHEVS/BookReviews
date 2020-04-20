@@ -25,7 +25,7 @@ public class ReviewViewModel extends AndroidViewModel {
     private final MediatorLiveData<ReviewEntity> observableReview;
 
 
-    public ReviewViewModel(@NonNull Application application, final long id, final long id_book, final String author,
+    public ReviewViewModel(@NonNull Application application, final String id, final String id_book, final String author,
                          final String date, final double grade, String review_text, ReviewRepository reviewRepository){
 
         super(application);
@@ -39,7 +39,7 @@ public class ReviewViewModel extends AndroidViewModel {
         observableReview = new MediatorLiveData<>();
         observableReview.setValue(null);
 
-        LiveData<ReviewEntity> review = repository.getReview(id_book,author, application);
+        LiveData<ReviewEntity> review = repository.getReview(author);
 
         observableReview.addSource(review, observableReview::setValue);
     }
@@ -50,8 +50,8 @@ public class ReviewViewModel extends AndroidViewModel {
         @NonNull
         private final Application application;
 
-        private final long id;
-        private final long id_book;
+        private final String id;
+        private final String id_book;
         private final String author;
         private final String date;
         private final double grade;
@@ -59,7 +59,7 @@ public class ReviewViewModel extends AndroidViewModel {
 
         private final ReviewRepository repository;
 
-        public Factory(@NonNull Application application, long reviewId, final long reviewId_book,
+        public Factory(@NonNull Application application, String reviewId, final String reviewId_book,
                        final String reviewAuthor, final String reviewDate, final double reviewGrade,
                        final String reviewReview_text){
 
@@ -83,15 +83,15 @@ public class ReviewViewModel extends AndroidViewModel {
     }
 
     public void createReview(ReviewEntity review, OnAsyncEventListener callBack){
-        repository.insert(review, callBack, application);
+        repository.insert(review, callBack);
     }
 
     public void updateReview(ReviewEntity review, OnAsyncEventListener callBack){
-        repository.update(review, callBack, application);
+        repository.update(review, callBack);
     }
 
     public void deleteReview(ReviewEntity review, OnAsyncEventListener callBack){
-        repository.delete(review, callBack, application);
+        repository.delete(review, callBack);
     }
 
 }

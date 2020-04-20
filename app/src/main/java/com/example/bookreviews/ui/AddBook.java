@@ -15,8 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.bookreviews.R;
-import com.example.bookreviews.database.async.CreateBook;
-import com.example.bookreviews.database.dao.BookDao;
+
 import com.example.bookreviews.database.entity.BookEntity;
 import com.example.bookreviews.database.repository.BookRepository;
 import com.example.bookreviews.util.OnAsyncEventListener;
@@ -29,7 +28,7 @@ public class AddBook extends AppCompatActivity {
     private BookEntity book;
     private BookViewModel viewModel;
 
-    private BookDao bookDao;
+
 
     private EditText etTitle;
     private EditText etAuthor;
@@ -63,7 +62,7 @@ public class AddBook extends AppCompatActivity {
         etPlotSummary = findViewById(R.id.plotSummary_editText);
 
         //creating the book object
-        BookViewModel.Factory factory = new BookViewModel.Factory(getApplication(),0,
+        BookViewModel.Factory factory = new BookViewModel.Factory(getApplication(),"",
                 "","","","",0,
                 "");
         viewModel = ViewModelProviders.of(this, factory).get(BookViewModel.class);
