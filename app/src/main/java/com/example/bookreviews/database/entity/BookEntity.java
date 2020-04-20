@@ -30,6 +30,8 @@ public class BookEntity {
         this.plotSummary = plotSummary;
     }
 
+    public BookEntity(){}
+
 
     public String getId(){
         return id;

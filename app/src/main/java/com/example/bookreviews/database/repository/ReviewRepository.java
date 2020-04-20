@@ -54,14 +54,10 @@ public class ReviewRepository {
 
     public void insert(final ReviewEntity review, final OnAsyncEventListener callback) {
         DatabaseReference reference = FirebaseDatabase.getInstance()
-                .getReference("books")
-                .child(review.getId_book())
-                .child("reviews");
+                .getReference("reviews");
         String key = reference.push().getKey();
         FirebaseDatabase.getInstance()
-                .getReference("books")
-                .child(review.getId_book())
-                .child("reviews")
+                .getReference("reviews")
                 .child(key)
                 .setValue(review, (databaseError, databaseReference) -> {
                     if (databaseError != null) {
@@ -75,8 +71,6 @@ public class ReviewRepository {
     public void delete(final ReviewEntity review, OnAsyncEventListener callback) {
         FirebaseDatabase.getInstance()
                 .getReference("reviews")
-                .child(review.getId_book())
-                .child("reviews")
                 .child(review.getId())
                 .removeValue((databaseError, databaseReference) -> {
                     if (databaseError != null) {
@@ -89,9 +83,7 @@ public class ReviewRepository {
 
     public void update(final ReviewEntity review, OnAsyncEventListener callback) {
         FirebaseDatabase.getInstance()
-                .getReference("books")
-                .child(review.getId_book())
-                .child("reviews")
+                .getReference("reviews")
                 .child(review.getId())
                 .updateChildren(review.toMap(), (databaseError, databaseReference) -> {
                     if (databaseError != null) {

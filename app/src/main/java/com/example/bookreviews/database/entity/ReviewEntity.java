@@ -43,6 +43,8 @@ public class ReviewEntity {
         this.review = review;
     }
 
+    public ReviewEntity(){}
+
     public String getId_book() {
         return id_book;
     }

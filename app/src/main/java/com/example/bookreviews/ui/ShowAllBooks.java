@@ -9,6 +9,8 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -88,7 +90,7 @@ public class ShowAllBooks extends AppCompatActivity {
 
         //Create the list of books to display the titles
         BookListViewModel.Factory factory = new BookListViewModel.Factory(getApplication());
-        viewModel = ViewModelProviders.of(this, factory).get(BookListViewModel.class);
+        viewModel = new ViewModelProvider(this, factory).get(BookListViewModel.class);
         viewModel.getBooks().observe(this, bookEntities -> {
             if(bookEntities!= null){
                 books = bookEntities;

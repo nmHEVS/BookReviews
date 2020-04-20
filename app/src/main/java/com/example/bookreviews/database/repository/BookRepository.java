@@ -51,19 +51,12 @@ public class BookRepository {
         return new BookListLiveData(reference);
     }
 
-
-
-
     public void insert(final BookEntity book, final OnAsyncEventListener callback) {
         DatabaseReference reference = FirebaseDatabase.getInstance()
-                .getReference("books")
-                .child(book.getTitle())
-                .child("reviews");
+                .getReference("books");
         String key = reference.push().getKey();
         FirebaseDatabase.getInstance()
                 .getReference("books")
-                .child(book.getTitle())
-                .child("reviews")
                 .child(key)
                 .setValue(book, (databaseError, databaseReference) -> {
                     if (databaseError != null) {
@@ -77,8 +70,6 @@ public class BookRepository {
     public void update(final BookEntity book, OnAsyncEventListener callback) {
         FirebaseDatabase.getInstance()
                 .getReference("books")
-                .child(book.getTitle())
-                .child("reviews")
                 .child(book.getId())
                 .updateChildren(book.toMap(), (databaseError, databaseReference) -> {
                     if (databaseError != null) {
@@ -92,8 +83,6 @@ public class BookRepository {
     public void delete(final BookEntity book, OnAsyncEventListener callback) {
         FirebaseDatabase.getInstance()
                 .getReference("books")
-                .child(book.getTitle())
-                .child("reviews")
                 .child(book.getId())
                 .removeValue((databaseError, databaseReference) -> {
                     if (databaseError != null) {
