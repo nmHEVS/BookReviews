@@ -35,15 +35,17 @@ public class ReviewRepository {
 
 
 
-    public LiveData<List<ReviewEntity>> getAllReviewsForABook(final String id_book){
+    public LiveData<List<ReviewEntity>> getAllReviewsForABook(final String book){
         DatabaseReference reference = FirebaseDatabase.getInstance()
-                .getReference("reviews");
-                //.child(id_book);
-        return new ReviewListLiveData(reference, id_book);    }
+                .getReference("books")
+                .child(book)
+                .child("reviews");
+        return new ReviewListLiveData(reference, book);    }
 
     public LiveData<ReviewEntity> getReview(final String id){
         DatabaseReference reference = FirebaseDatabase.getInstance()
-                .getReference("reviews")
+                .getReference("books")
+                .child("reviews")
                 .child(id);
         return new ReviewLiveData(reference);
     }
