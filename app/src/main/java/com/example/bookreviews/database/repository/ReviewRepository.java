@@ -37,9 +37,7 @@ public class ReviewRepository {
 
     public LiveData<List<ReviewEntity>> getAllReviewsForABook(final String book){
         DatabaseReference reference = FirebaseDatabase.getInstance()
-                .getReference("books")
-                .child(book)
-                .child("reviews");
+                .getReference("reviews");
         return new ReviewListLiveData(reference, book);    }
 
     public LiveData<ReviewEntity> getReview(final String id){

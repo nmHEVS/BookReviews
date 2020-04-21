@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="?attr/textColor"
                 android:backgroundTint="?attr/metaTextColor"
-                android:inputType="text" />
+                android:inputType="number"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
