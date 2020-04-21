@@ -36,8 +36,10 @@ public class ReviewLiveData extends LiveData<ReviewEntity> {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
             ReviewEntity entity = dataSnapshot.getValue(ReviewEntity.class);
-            entity.setId(dataSnapshot.getKey());
-            setValue(entity);
+            if(entity != null){
+                entity.setId(dataSnapshot.getKey());
+                setValue(entity);
+            }
         }
 
         @Override
