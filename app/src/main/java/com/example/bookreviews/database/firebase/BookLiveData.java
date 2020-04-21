@@ -35,8 +35,10 @@ public class BookLiveData  extends LiveData<BookEntity> {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
             BookEntity entity = dataSnapshot.getValue(BookEntity.class);
-            entity.setId(dataSnapshot.getKey());
-            setValue(entity);
+            if(entity != null){
+                entity.setId(dataSnapshot.getKey());
+                setValue(entity);
+            }
         }
 
         @Override
