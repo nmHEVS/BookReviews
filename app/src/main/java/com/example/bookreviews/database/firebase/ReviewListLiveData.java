@@ -53,6 +53,7 @@ public class ReviewListLiveData extends LiveData<List<ReviewEntity>> {
     private List<ReviewEntity> toReviews(DataSnapshot snapshot) {
         List<ReviewEntity> reviews = new ArrayList<>();
         for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+            //select only the reviews we want (corresponding to the book iD choosen)
             if(childSnapshot.getValue(ReviewEntity.class).getId_book().equals(book)){
                 ReviewEntity entity = childSnapshot.getValue(ReviewEntity.class);
                 entity.setId(childSnapshot.getKey());

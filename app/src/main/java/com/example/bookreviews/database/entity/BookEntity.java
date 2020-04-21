@@ -9,8 +9,6 @@ import androidx.room.PrimaryKey;
 import java.util.HashMap;
 import java.util.Map;
 
-//Todo put Exclude if needed
-
 public class BookEntity {
 
     private String id;

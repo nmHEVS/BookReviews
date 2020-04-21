@@ -11,8 +11,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-//Todo put exclude if needed
-
 @Entity(tableName = "reviews",
         foreignKeys =
         @ForeignKey(
